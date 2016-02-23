@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application name="OSMF based player"
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:wn="codebase.worldnow.com.*"
+        xmlns:ui="codebase.worldnow.ui.*"
+        skinClass="codebase.worldnow.skins.ApplicationSkin"
+        backgroundAlpha="0"
+        initialize="init()">
+	
+	<fx:Metadata>
+ 		[Style(name="backgroundAlpha",type="Number",default="0")]
+ 	</fx:Metadata>
+	
+	<fx:Script>
+        <![CDATA[
+			import codebase.worldnow.com.CssStyleManager;
+			import codebase.worldnow.com.Observer;
+			import codebase.worldnow.reuse.Globals;
+			import codebase.worldnow.skins.MessageSkin;
+			import codebase.worldnow.util.StringUtil;
+			
+			import mx.core.FlexGlobals;
+			
+        	flash.system.Security.allowDomain("*");
+
+			public var globals = Globals;
+        	private var cssStyleManager:CssStyleManager;
+        	private var _width:Number;
+        	private var _height:Number;
+			[Bindable] private var _hasFullScreen:Boolean;
+        	[Bindable] private var _transportShareButtons:Array;
+        	[Bindable] public var _toolsShareButtons:Array;
+        	[Bindable] private var _overlayShareButtons:Array;
+        	[Bindable] private var _progressBarWidth:Number;
+        	[Bindable] private var _overlayProgressBarWidth:Number;
+			[Bindable] private var _overlayProgressTimerWidth:Number;
+			[Bindable] private var _transportShareButtonsPosition:Number;
+        	[Bindable] public var _controlsType:String; // "fixed", "overlay"
+        	[Bindable] private var _volumeControlsType:String; // "horizontal", "vertical"
+       		[Bindable] private var _displayWidth:Number;
+			[Bindable] public var _displayHeight:Number;
+			[Bindable] public var _fullDisplayHeight:Number;
+        	[Bindable] public var _controlBarHeight:Number;
+			[Bindable] public var _overlayShareButtonsWidth:Number;
+			[Bindable] public var _overlayShareButtonsHeight:Number;
+			[Bindable] public var _overlayShareButtonsGap:Number;
+			[Bindable] private var _embeddedGalleryButtonsNum:Number = 1;
+			[Bindable] private var _closeCaptionBackgroundTransparency:Number = 0;
+			
+			
+            private function init():void {
+				/*  Skin Settings  */
+				//FlexGlobals.topLevelApplication.parameters.cssSwfUrl = "http://wnow.ddev1.worldnow.com/Global/video/flash/test/osmf/RedAndBlack.swf";
+				//FlexGlobals.topLevelApplication.parameters.cssTextUrl = "http://wnow.ddev1.worldnow.com/Global/video/flash/test/osmf/RedAndBlack.css";
+				FlexGlobals.topLevelApplication.parameters.textOverSwf = false; // default = true
+            	
+            	/* Load FlashVars and apply them */            	
+            	Globals.getFlashVars(FlexGlobals.topLevelApplication.parameters);
+				Observer.init(Globals.vars.idKey);
+				_width = (Globals.vars.playerWidth != undefined) ? Globals.vars.playerWidth : 700;
+				_height = (Globals.vars.playerHeight != undefined) ? Globals.vars.playerHeight : 450;
+				if (Globals.vars.controlsType == "fixed" || Globals.vars.controlsType == "none") {
+					_controlsType = Globals.vars.controlsType;
+				} else {
+					_controlsType = "overlay";
+				}
+				_volumeControlsType = (Globals.vars.volumeControlsType != undefined) ? Globals.vars.volumeControlsType : "vertical";
+				if (Globals.vars.controlBarHeight != undefined) {
+					_controlBarHeight = Globals.vars.controlBarHeight;
+				} else if (_controlsType == "overlay") {
+					_controlBarHeight = 90;
+				} else {
+					_controlBarHeight = 30;
+				}
+				_displayWidth = _width;
+				_displayHeight = (_controlsType == "fixed") ? (_height - _controlBarHeight) : _height;
+				_fullDisplayHeight = _height;
+				if (_displayWidth >= 556) {
+					embeddedGallery.contentWidth = 495;	
+				} else if (_displayWidth >= 434) {
+					embeddedGallery.contentWidth = 330;
+				} else {
+					embeddedGallery.contentWidth = 165;
+				}
+				if (_displayHeight < 214) {
+					embeddedGallery.contentWidth = 165;	
+				}
+				if (_displayWidth < 300 || _displayHeight < 200) {
+					Globals.vars.hasEmbeddedGallery = false;
+				}
+				if (StringUtil.stringToBoolean(Globals.vars.isAutoStart)) {
+					screenPlayButton.disableButton({});
+					screenPlayButton.hideButton({});
+					playPauseButton.enabled = false;
+					overlayPlayPauseButton.enabled = false;
+				}
+				_transportShareButtons = Globals.vars.transportShareButtons;
+				_toolsShareButtons = Globals.vars.toolsShareButtons;
+				_overlayShareButtons = Globals.vars.overlayShareButtons;
+				_hasFullScreen = Globals.vars.hasFullScreen;
+				if (_toolsShareButtons.length > 0 && _transportShareButtons.indexOf("tools") < 0) {
+					_transportShareButtons = _transportShareButtons.concat(["tools"]);
+				}
+				_overlayShareButtonsWidth = ((_displayHeight > 280 && _controlsType == "overlay") ||
+											 (_displayHeight > 260 && _controlsType == "fixed")) ? 60 : _displayHeight * 0.24;
+				_overlayShareButtonsHeight = ((_displayHeight > 280 && _controlsType == "overlay") ||
+											  (_displayHeight > 260 && _controlsType == "fixed")) ? 50 : _displayHeight * 0.20;
+				_overlayShareButtonsGap = ((_displayHeight > 280 && _controlsType == "overlay") ||
+										   (_displayHeight > 260 && _controlsType == "fixed")) ? _displayHeight * 0.04 : _displayHeight * 0.02;
+				_overlayShareButtonsGap += _overlayShareButtonsHeight;
+				if (_overlayShareButtons.indexOf('email') > -1) _embeddedGalleryButtonsNum++;
+				if (_overlayShareButtons.indexOf('link') > -1) _embeddedGalleryButtonsNum++;
+				if (_overlayShareButtons.indexOf('share') > -1) _embeddedGalleryButtonsNum++;
+				if (Globals.vars.closeCaptionBackgroundTransparency != undefined) {
+					_closeCaptionBackgroundTransparency = Globals.vars.closeCaptionBackgroundTransparency; 
+				}
+				
+        		toolBar.init(_toolsShareButtons);
+        		positionControls();
+
+            	/* Load Skin */
+				cssStyleManager = new CssStyleManager(this.styleManager);
+            	//this.visible = false; // Hide player to avoid blinking on skin load
+            	Observer.Register("SKIN_LOADED", this, "showPlayer"); // And show it when skin is loaded
+            	trace("> Start skinning"); 
+            	cssStyleManager.init();
+            	
+				/* Initialize some other controls */
+				transportSummaryButton.enabled = false;
+				if (Globals.vars.isMute) Observer.Notify("VIDEO_VOLUME_CHANGE", {newVolume:0});
+
+				ccPane2.x = display.width / 20; 
+				ccPane2.y = 10; 
+				ccPane2.width = display.width * 0.9;
+				ccPane2.setSize();
+				
+            	/* Initialize Video Display */
+            	display.init();
+            	
+				systemManager.stage.addEventListener(FullScreenEvent.FULL_SCREEN, function(e:FullScreenEvent):void{
+					if (e.fullScreen) {
+         				display.width = systemManager.stage.stageWidth;
+						if (_controlsType == "overlay") {
+							display.height = systemManager.stage.stageHeight;
+							menuBar.includeInLayout = false;
+							menuBar.y = stage.stageHeight - _controlBarHeight;
+						} else {
+							display.height = systemManager.stage.stageHeight - _controlBarHeight;
+							menuBar.includeInLayout = true;
+						}
+						_fullDisplayHeight = systemManager.stage.stageHeight;
+						Observer.Notify("CLOSE_PANE", {paneName:"all", except:["embeddedGallery", "ccSettingsPane"]});
+						transportEmailButton.visible = false;
+						transportEmailDivider.visible = false;
+						transportEmailDivider.includeInLayout = false;
+						transportLinkButton.visible = false;
+						transportLinkDivider.visible = false;
+						transportLinkDivider.includeInLayout = false;
+						transportShareButton.visible = false;
+						transportShareDivider.visible = false;
+						transportShareDivider.includeInLayout = false;
+						transportHelpButton.visible = false;
+						transportHelpDivider.visible = false;
+						transportHelpDivider.includeInLayout = false;
+						transportSummaryButton.visible = _transportShareButtons.indexOf('summary') > -1;
+						transportSummaryDivider.visible = _transportShareButtons.indexOf('summary') > -1;
+						transportSummaryDivider.includeInLayout = _transportShareButtons.indexOf('summary') > -1;
+						transportCcButton.visible = _transportShareButtons.indexOf('cc') > -1;
+						transportCcDivider.visible = _transportShareButtons.indexOf('cc') > -1;
+						transportCcDivider.includeInLayout = _transportShareButtons.indexOf('cc') > -1;
+						transportMobDubButton.visible = false;
+						transportMobDubDivider.visible = false;
+						transportMobDubDivider.includeInLayout = false;
+						toolBar.visible = false;
+						toolbarDivider.visible = false;
+						toolbarDivider.includeInLayout = false;
+						galleryReplay.visible = false;
+						galleryEmail.visible = false;
+						galleryGetLink.visible = false;
+						galleryShare.visible = false;
+					} else {
+						display.width = _displayWidth;
+						display.height = _displayHeight;
+						_fullDisplayHeight = _height;
+						menuBar.includeInLayout = true;
+						transportEmailButton.visible = _transportShareButtons.indexOf('email') > -1;
+						transportEmailDivider.visible = _transportShareButtons.indexOf('email') > -1;
+						transportEmailDivider.includeInLayout = _transportShareButtons.indexOf('email') > -1;
+						transportLinkButton.visible = _transportShareButtons.indexOf('link') > -1;
+						transportLinkDivider.visible = _transportShareButtons.indexOf('link') > -1;
+						transportLinkDivider.includeInLayout = _transportShareButtons.indexOf('link') > -1;
+						transportShareButton.visible = _transportShareButtons.indexOf('share') > -1;
+						transportShareDivider.visible = _transportShareButtons.indexOf('share') > -1;
+						transportShareDivider.includeInLayout = _transportShareButtons.indexOf('share') > -1;
+						transportHelpButton.visible = _transportShareButtons.indexOf('help') > -1;
+						transportHelpDivider.visible = _transportShareButtons.indexOf('help') > -1;
+						transportHelpDivider.includeInLayout = _transportShareButtons.indexOf('help') > -1;
+						transportSummaryButton.visible = _transportShareButtons.indexOf('summary') > -1;
+						transportSummaryDivider.visible = _transportShareButtons.indexOf('summary') > -1;
+						transportSummaryDivider.includeInLayout = _transportShareButtons.indexOf('summary') > -1;
+						transportCcButton.visible = _transportShareButtons.indexOf('cc') > -1;
+						transportCcDivider.visible = _transportShareButtons.indexOf('cc') > -1;
+						transportCcDivider.includeInLayout = _transportShareButtons.indexOf('cc') > -1;
+						transportMobDubButton.visible = _transportShareButtons.indexOf('mobdub') > -1;
+						transportMobDubDivider.visible = _transportShareButtons.indexOf('mobdub') > -1;
+						transportMobDubDivider.includeInLayout = _transportShareButtons.indexOf('mobdub') > -1;
+						toolBar.visible = _transportShareButtons.indexOf('tools') > -1;
+						toolbarDivider.visible = _transportShareButtons.indexOf('tools') > -1;
+						toolbarDivider.includeInLayout = _transportShareButtons.indexOf('tools') > -1;
+						if (_controlsType == "overlay" && !embeddedGallery.isActive) {
+							overlayEmail.visible = _overlayShareButtons.indexOf('email') > -1;
+							overlayEmail.alpha = (overlayEmail.visible) ? 1 : 0;
+							overlayGetLink.visible = _overlayShareButtons.indexOf('link') > -1;
+							overlayGetLink.alpha = (overlayGetLink.visible) ? 1 : 0;
+							overlayShare.visible = _overlayShareButtons.indexOf('share') > -1;
+							overlayShare.alpha = (overlayShare.visible) ? 1 : 0;
+							overlayHelp.visible = _overlayShareButtons.indexOf('help') > -1;
+							overlayHelp.alpha = (overlayHelp.visible) ? 1 : 0;
+						}
+						galleryReplay.visible = true;
+						galleryEmail.visible = _overlayShareButtons.indexOf('email') > -1;
+						galleryGetLink.visible = _overlayShareButtons.indexOf('link') > -1;
+						galleryShare.visible = _overlayShareButtons.indexOf('share') > -1;
+					}
+					positionControls(e.fullScreen);
+					Observer.Notify("FULLSCREEN_EVENT", {fullScreen:e.fullScreen});
+         		});
+            }
+            
+			// Called when skin is loaded. To set visibility of the previosly hidden player
+		    public function showPlayer(e:Object):void
+		    {
+		    	this.visible = true;
+		    }
+		    
+		    private function positionControls(inFullScreen:Boolean = false):void {
+		    	if (inFullScreen) {
+		    		_progressBarWidth = display.width - 185;
+					if (_transportShareButtons.indexOf('cc') > -1) _progressBarWidth = _progressBarWidth - 46;
+					if (_transportShareButtons.indexOf('summary') > -1) _progressBarWidth = _progressBarWidth - 46;
+		    	} else {
+					_progressBarWidth = display.width - 185 - _transportShareButtons.length * 46;
+				}
+				//_overlayProgressBarWidth = (_displayWidth < 421) ? display.width - 316 : display.width - 366;
+				if (_displayWidth < 421) {
+					_overlayProgressBarWidth = display.width - 316;
+					if (_displayWidth < 336) _overlayProgressBarWidth = _overlayProgressBarWidth + 60; 
+				} else {
+					_overlayProgressBarWidth = display.width - 366;
+				}
+
+				if (!_hasFullScreen) {
+					_progressBarWidth = _progressBarWidth + 55;
+					_overlayProgressBarWidth = _overlayProgressBarWidth + 50;
+				}
+				if (_transportShareButtons.indexOf('cc') > -1) {
+					_overlayProgressBarWidth = _overlayProgressBarWidth - 50;
+				}
+        		if (_volumeControlsType == "vertical") {
+        			_progressBarWidth = _progressBarWidth - 46;
+        			_transportShareButtonsPosition = _progressBarWidth + 181;
+        		} else {
+        			_progressBarWidth = _progressBarWidth - 150;
+        			_transportShareButtonsPosition = _progressBarWidth + 284;
+        		}
+				if (_displayWidth < 301 || !Globals.vars.hasProgressTimer) _progressBarWidth += 73;
+				if (_displayWidth < 361 || !Globals.vars.hasProgressTimer) _overlayProgressBarWidth += 65;
+				if ((_displayWidth < 361 || !Globals.vars.hasProgressTimer)&& inFullScreen) _overlayProgressBarWidth += 50;
+		    }
+        ]]>
+    </fx:Script>
+    
+    
+    <fx:Style source="codebase/worldnow/assets/styles/default.css"/>
+	
+    <s:VGroup gap="0" paddingBottom="0" paddingTop="0">
+		<!-- Display -->
+		<s:SkinnableContainer
+			skinClass="codebase.worldnow.skins.VideoDisplay">
+			<wn:OSMF_VideoDisplay id="display"
+		    	width="{_displayWidth}" height="{_displayHeight}"
+				mouseMove="overlayControlPanel.mouseMove(_controlsType == 'overlay')"
+				rollOut="overlayControlPanel.mouseOut(_controlsType == 'overlay')"/>
+		</s:SkinnableContainer>
+		<ui:CloseCaption id="ccPane2" visible="false" includeInLayout="false"
+						 skinClass="codebase.worldnow.skins.CloseCaptionSkin"/>
+		<ui:Message id="message" 
+			width="{display.width}" height="{display.height}" includeInLayout="false"
+			skinClass="codebase.worldnow.skins.MessageSkin"
+			mouseMove="overlayControlPanel.mouseMove(_controlsType == 'overlay')"
+			rollOut="overlayControlPanel.mouseOut(_controlsType == 'overlay')"/>
+		
+		<!-- _controlsType = "fixed" -->
+
+		<!-- Share panes -->
+		<s:Group visible="{_controlsType == 'fixed'}"
+	   		width="{display.width}" height="{display.height}"
+	    	includeInLayout="false">
+			<ui:Pane id="summaryPane" label=""
+					 width="{display.width}" height="90" bottom="0" left="0"
+					 styleName="overlayLabel">
+				<s:RichText text="{display.currentContentClip.headline}" 
+							  styleName="overlayTitle" maxDisplayedLines="1"
+							  includeInLayout="false"
+							  x="25" y="15" height="20" width="{display.width - 65}"/>
+				<s:RichText text="{StringUtil.stripHtmlTags(display.currentContentClip.summary)}" 
+							  styleName="overlayLabel" maxDisplayedLines="3"
+							  includeInLayout="false"
+							  x="25" y="40" height="40" width="{display.width - 62}"/>
+			</ui:Pane>
+			<ui:Pane id="ccPane" label="Closed Caption"
+					 width="{display.width}" height="130" bottom="0" left="0"
+					 styleName="overlayLabel">
+				<s:TextArea id="ccText" styleName="overlayLabel"
+							includeInLayout="false" selectable="false"
+							x="25" y="40" height="80" width="{display.width - 52}"/>
+			</ui:Pane>
+		</s:Group>
+
+		<!-- Controls -->
+		<s:SkinnableContainer id="menuBar" styleName="menuBar" 
+	    	visible="{_controlsType == 'fixed'}"
+	    	width="{display.width}" height="{_controlBarHeight}">
+			<ui:PlayPauseButton id="playPauseButton" styleName="playPauseButton" buttonMode="true"
+				toolTip="{playPauseButton.isPlaying ? 'Pause' : 'Play'}"/>
+			<ui:Divider marginRight="15" styleName="divider"/>
+			<ui:ProgressBar id="progressBar" styleName="progressBar" liveDragging="false" 
+				width="{_progressBarWidth}"/> <!-- width="{display.width - 344}"/> -->
+			<ui:ProgressTimer id="progressTimer" styleName="progressTimer"
+							  visible="{(_displayWidth > 300 &amp;&amp; Globals.vars.hasProgressTimer)}"
+							  includeInLayout="{(_displayWidth > 300 &amp;&amp; Globals.vars.hasProgressTimer)}"/>
+			<ui:Divider styleName="divider" marginLeft="5" marginRight="0"/>
+			<ui:VolumeButton id="volumeButton" buttonMode="true" toolTip="Volume" 
+				visible="{_volumeControlsType == 'horizontal'}"
+				includeInLayout="{_volumeControlsType == 'horizontal'}"/>
+			<ui:VolumeBar id="volumeBar" styleName="volumeBar" width="110"
+				visible="{_volumeControlsType == 'horizontal'}"
+				includeInLayout="{_volumeControlsType == 'horizontal'}"/>
+			<ui:VolumeBarVertical id="volumeBarVertical" 
+				visible="{_volumeControlsType == 'vertical'}"
+				includeInLayout="{_volumeControlsType == 'vertical'}"/>
+
+			<!-- Optional buttons -->
+				<ui:Divider marginLeft="0"  styleName="divider"
+					visible="{_transportShareButtons.length > 0 || _hasFullScreen}"/>			
+			
+				<ui:_Button id="transportEmailButton" styleName="transportButton" 
+					buttonMode="true" includeInLayout="false" y="2"
+					x="{_transportShareButtonsPosition + _transportShareButtons.indexOf('email') * 47}"
+					visible="{_transportShareButtons.indexOf('email') > -1}"
+					click="Observer.Notify('OPEN_PANE', {paneName:'overlayEmailPane'});" toolTip="Email"/>
+				<ui:Divider id="transportEmailDivider" marginLeft="45" styleName="divider" marginRight="0"
+					includeInLayout="{_transportShareButtons.indexOf('email') > -1}"
+					visible="{_transportShareButtons.indexOf('email') > -1}"/>
+
+				<ui:_Button id="transportLinkButton" styleName="transportButton"
+					buttonMode="true" includeInLayout="false" y="2" 
+					x="{_transportShareButtonsPosition + _transportShareButtons.indexOf('link') * 47}" 
+					visible="{_transportShareButtons.indexOf('link') > -1}"
+					click="Observer.Notify('OPEN_PANE', {paneName:'overlayGetLinkPane'});" toolTip="Embed"/>
+				<ui:Divider id="transportLinkDivider" marginLeft="45" styleName="divider" marginRight="0"
+					includeInLayout="{_transportShareButtons.indexOf('link') > -1}"
+					visible="{_transportShareButtons.indexOf('link') > -1}"/>
+					
+				<ui:_Button id="transportShareButton" styleName="transportButton"
+					buttonMode="true" includeInLayout="false" y="2"
+					x="{_transportShareButtonsPosition + _transportShareButtons.indexOf('share') * 47}" 
+					visible="{_transportShareButtons.indexOf('share') > -1}"
+					click="clickThrough.openShareUrl('more');" toolTip="Share"/>
+					<!-- click="Observer.Notify('OPEN_PANE', {paneName:'sharePane'});" -->
+				<ui:Divider id="transportShareDivider" marginLeft="45" styleName="divider" marginRight="0"
+					includeInLayout="{_transportShareButtons.indexOf('share') > -1}"
+					visible="{_transportShareButtons.indexOf('share') > -1}"/>
+					
+				<ui:_Button id="transportHelpButton" styleName="transportButton"
+					buttonMode="true" includeInLayout="false" y="2"
+					x="{_transportShareButtonsPosition + _transportShareButtons.indexOf('help') * 47}"
+					visible="{_transportShareButtons.indexOf('help') > -1}"
+					click="Observer.Notify('HELP_CLICKED', {});" toolTip="Help"/>
+				<ui:Divider id="transportHelpDivider" marginLeft="45" styleName="divider" marginRight="0"
+					includeInLayout="{_transportShareButtons.indexOf('help') > -1}"
+					visible="{_transportShareButtons.indexOf('help') > -1}"/>
+
+				<ui:SummaryButton id="transportSummaryButton" styleName="transportButton"
+					buttonMode="true" includeInLayout="false" y="2"
+					x="{_transportShareButtonsPosition + _transportShareButtons.indexOf('summary') * 47}"
+					visible="{_transportShareButtons.indexOf('summary') > -1}"
+					relatedPane = "summaryPane"
+					toolTip="Summary"/>
+				<!--enabled="{StringUtil.validateString(display.currentContentClip.summary)}"-->
+				<ui:Divider id="transportSummaryDivider" marginLeft="45" styleName="divider" marginRight="0"
+					includeInLayout="{_transportShareButtons.indexOf('summary') > -1}"
+					visible="{_transportShareButtons.indexOf('summary') > -1}"/>
+			
+				<ui:CcButton id="transportCcButton" styleName="transportButton"
+					buttonMode="true" includeInLayout="false" y="2"
+					x="{_transportShareButtonsPosition + _transportShareButtons.indexOf('cc') * 47}"
+					visible="{_transportShareButtons.indexOf('cc') > -1}"
+					toolTip="View with Closed Captioning"/>
+				<ui:CcBar id="transportCcBar"  
+					ccButton="{transportCcButton}" 
+					skinClass="codebase.worldnow.skins.CcBarSkin" includeInLayout="false" y="2"
+					x="{transportCcButton.x}"
+					visible="false" enabled="false"/>
+					<!--
+					visible="{transportCcButton.visible}"
+					enabled="{transportCcButton.enabled}"
+					-->
+			
+				<ui:Divider id="transportCcDivider" marginLeft="45" styleName="divider" marginRight="0"
+					includeInLayout="{_transportShareButtons.indexOf('cc') > -1}"
+					visible="{_transportShareButtons.indexOf('cc') > -1}"/>
+		
+				<ui:MobDubButton id="transportMobDubButton" styleName="transportButton"
+					buttonMode="true" includeInLayout="false" y="2"
+					x="{_transportShareButtonsPosition + _transportShareButtons.indexOf('mobdub') * 47}"
+					visible="{_transportShareButtons.indexOf('mobdub') > -1}"
+					toolTip="MobDub"/>
+				<ui:Divider id="transportMobDubDivider" marginLeft="45" styleName="divider" marginRight="0"
+					includeInLayout="{_transportShareButtons.indexOf('mobdub') > -1}"
+					visible="{_transportShareButtons.indexOf('mobdub') > -1}"/>
+		
+				<ui:ToolBar id="toolBar" y="5" includeInLayout="false"
+					x="{_transportShareButtonsPosition + (_transportShareButtons.indexOf('tools') - 1) * 47 + 43}" 
+					visible="{_transportShareButtons.indexOf('tools') > -1}"/>
+				<ui:Divider id="toolbarDivider" marginLeft="45" styleName="divider" marginRight="0"
+					includeInLayout="{_transportShareButtons.indexOf('tools') > -1}"
+					visible="{_transportShareButtons.indexOf('tools') > -1}"/>
+			<!-- -->
+
+			
+
+			<!--<ui:Divider marginLeft="0"  styleName="divider"/>-->
+
+			<ui:FullScreenButton id="fullScreenButton" styleName="fullScreenButton"
+				buttonMode="true" visible="{_hasFullScreen}"
+				toolTip="{fullScreenButton.isInFullScreen ? 'Minimize' : 'Fullscreen'}"/>
+
+		</s:SkinnableContainer>
+
+		<ui:ClickThroughArea
+			id="clickThrough"
+			visibility="true"  
+			includeInLayout="false" buttonMode="true"
+			width="{display.width}" 
+			height="{(_controlsType == 'overlay') ? display.height - _controlBarHeight : display.height}"
+			skinClass="codebase.worldnow.skins.ClickThroughSkin"
+			mouseMove="overlayControlPanel.mouseMove(_controlsType == 'overlay')"
+			rollOut="overlayControlPanel.mouseOut(_controlsType == 'overlay')"/>
+		<ui:adContainer_v3 id="adContainer_v3" includeInLayout="false"
+						mouseMove="overlayControlPanel.mouseMove(_controlsType == 'overlay')"
+						rollOut="overlayControlPanel.mouseOut(_controlsType == 'overlay')"
+						></ui:adContainer_v3>
+
+		<!-- _controlsType = "overlay" -->
+
+		<!-- Controls -->
+		<ui:OverlayControlPanel id="overlayControlPanel"
+				enabled="{_controlsType == 'overlay'}"
+	    		visible="{_controlsType == 'overlay'}" includeInLayout="false"
+	    		width="{display.width}" 
+				height="90" y="{display.height - 90}"
+				alpha="0" displayHeight="{_displayHeight}"
+				mouseMove="overlayControlPanel.mouseMove(_controlsType == 'overlay')"
+				rollOut="overlayControlPanel.mouseOut(_controlsType == 'overlay')"><!--overlayShareButtons="{_overlayShareButtons}"-->
+			<ui:PlayPauseButton id="overlayPlayPauseButton" buttonMode="true"
+				toolTip="{overlayPlayPauseButton.isPlaying ? 'Pause' : 'Play'}"/>
+			<ui:Divider marginRight="12" styleName="overlayDivider"/>
+			<ui:ProgressBar id="overlayProgressBar" styleName="overlayProgressBar" 
+				liveDragging="false" width="{_overlayProgressBarWidth}"/>
+			<ui:ProgressTimer id="overlayProgressTimer" styleName="overlayProgressTimer"
+							  width="{(_displayWidth > 360 &amp;&amp; Globals.vars.hasProgressTimer) ? 80 : 15}"/>
+			<ui:Divider marginRight="8" visible="false" styleName="overlayDivider"/>
+			<ui:VolumeButton id="overlayVolumeButton" buttonMode="true" toolTip="Volume" 
+							 width="{(_displayWidth > 335 ? 40 : 38)}"/>
+			<ui:VolumeBar id="overlayVolumeBar" styleName="overlayVolumeBar"
+						  width="{(_displayWidth > 420) ? 110 : (_displayWidth > 335 ? 60 : 0)}"/>
+			<!--visible="{_displayWidth > 335}"-->
+			<ui:Divider marginLeft="8" visible="false" styleName="overlayDivider"/>
+			<ui:CcButton id="overlayCcButton" buttonMode="true" 
+						 visible="{_transportShareButtons.indexOf('cc') > -1}"
+						 includeInLayout="{_transportShareButtons.indexOf('cc') > -1}"
+						 toolTip="View with Closed Captioning"/>
+			<ui:CcBar id="overlayCcBar" 
+					  ccButton="{overlayCcButton}"
+					  skinClass="codebase.worldnow.skins.CcBarSkin" 
+					  includeInLayout="false"
+					  y="{overlayCcButton.y}" x="{overlayCcButton.x}"
+					  enabled="false" visible="false"/>
+					<!--	enabled="{overlayCcButton.enabled}"-->
+			<ui:Divider marginLeft="8" visible="false" styleName="overlayDivider"
+						includeInLayout="{_transportShareButtons.indexOf('cc') > -1}"/>
+			<ui:FullScreenButton id="overlayFullScreenButton" buttonMode="true"
+				visible="{_hasFullScreen}"
+				toolTip="{overlayFullScreenButton.isInFullScreen ? 'Minimize' : 'Fullscreen'}"/>
+		</ui:OverlayControlPanel>
+
+		<!-- Share panes -->
+		<s:Group
+	   		width="{display.width}" height="{display.height}"
+	    	includeInLayout="false">
+			
+			<ui:ShareButton styleName="overlayShareButton overlayEmail" id="overlayEmail" label="EMAIL"
+					  pane="overlayEmailPane" buttonMode="true" 
+					  controlsType="{_controlsType}"
+					  click="Observer.Notify('OPEN_PANE', {paneName:'overlayEmailPane'});"
+					  enabled="{_overlayShareButtons.indexOf('email') > -1}"
+					  top="{_overlayShareButtonsGap * _overlayShareButtons.indexOf('email') + _overlayShareButtonsHeight/3}"
+					  right="{display.height * 0.06}" 
+					  height="{_overlayShareButtonsHeight}"
+					  width="{_overlayShareButtonsWidth}"/>
+			<ui:ShareButton styleName="overlayShareButton overlayGetLink" id="overlayGetLink" label="EMBED"
+					  pane="overlayGetLinkPane" buttonMode="true" controlsType="{_controlsType}"
+					  click="Observer.Notify('OPEN_PANE', {paneName:'overlayGetLinkPane'});"
+					  enabled="{_overlayShareButtons.indexOf('link') > -1}"
+					  top="{_overlayShareButtonsGap * _overlayShareButtons.indexOf('link') + _overlayShareButtonsHeight/3}"
+					  right="{display.height * 0.06}" 
+					  height="{_overlayShareButtonsHeight}"
+					  width="{_overlayShareButtonsWidth}"/>
+			<ui:ShareButton styleName="overlayShareButton overlayShare" id="overlayShare" label="SHARE"
+					  pane="overlaySharePane" buttonMode="true" controlsType="{_controlsType}"
+					  click="clickThrough.openShareUrl('more');" 
+					  enabled="{_overlayShareButtons.indexOf('share') > -1}"
+					  top="{_overlayShareButtonsGap * _overlayShareButtons.indexOf('share') + _overlayShareButtonsHeight/3}"
+					  right="{display.height * 0.06}" 
+					  height="{_overlayShareButtonsHeight}"
+					  width="{_overlayShareButtonsWidth}"/>
+			<ui:ShareButton styleName="overlayShareButton overlayHelp" id="overlayHelp" label="HELP"
+					  pane="overlayHelpPane" buttonMode="true" controlsType="{_controlsType}" 
+					  click="Observer.Notify('HELP_CLICKED', {});" 
+					  enabled="{_overlayShareButtons.indexOf('help') > -1}"
+					  top="{_overlayShareButtonsGap * _overlayShareButtons.indexOf('help') + _overlayShareButtonsHeight/3}"
+					  right="{display.height * 0.06}" 
+					  height="{_overlayShareButtonsHeight}"
+					  width="{_overlayShareButtonsWidth}"/>
+
+			<ui:Pane id="overlayEmailPane" label="Email"
+				top="{overlayEmail.y}"
+	    		right="{overlayEmail.width + display.height * 0.06 + 10}" 
+				width="{display.width * 0.65}" 
+				height="{(display.height > 240) ? display.height * 0.8 : display.height * 0.9}">
+				<ui:EmailLinkForm id="overlayEmailForm" styleName="form" includeInLayout="false"
+					_controlsType="{_controlsType}"
+					x="10" y="40"
+					isVertical="true"
+					width="{display.width * 0.65 - 40}" 
+					height="{(display.height > 240) ? display.height * 0.8 - 30 : display.height * 0.9 - 20}"/>
+					<!-- x="10" y="40" width="315" height="205" isVertical="true"/> -->
+			</ui:Pane>
+			<ui:Pane id="overlayGetLinkPane" label="Embed"
+	    		top="{(_displayHeight > 255) ? overlayGetLink.y : display.height * 0.06}"
+				right="{overlayGetLink.width + display.height * 0.06 + 10}" 
+				width="{display.width * 0.65}" 
+				height="180">
+				<ui:GetLinkForm styleName="form" includeInLayout="false" id="GetLinkForm"
+					_controlsType="{_controlsType}"
+	    			x="10" y="40"
+					width="{display.width * 0.65 - 40}" 
+					height="{display.height * 0.6 - 30}"/>
+			</ui:Pane>
+			<ui:Pane id="overlaySharePane"
+	    		top="{overlayShare.top}"
+	    		right="90" width="360" height="50" visible="false">
+	    		<s:Button label="TWITTER"
+					styleName="sharePaneButton sharePaneButton_Twitter"
+					click="clickThrough.openShareUrl('twitter');" 
+					buttonMode="true" includeInLayout="false"
+					y="12" x="25" width="80"/>
+				<s:Button label="FACEBOOK"
+					styleName="sharePaneButton sharePaneButton_Facebook"
+					click="clickThrough.openShareUrl('facebook');"
+					buttonMode="true" includeInLayout="false"
+					y="12" x="125" width="85"/>
+				<s:Button label="MORE"
+					styleName="sharePaneButton sharePaneButton_More" 
+					click="clickThrough.openShareUrl('more');"
+					buttonMode="true" includeInLayout="false"
+					y="12" x="230" width="80"/>
+			</ui:Pane>
+			<ui:CcSettingsPane id="ccSettingsPane" label="Closed Caption Settings"
+					 _top="{((display.height - (30 + 105 + 125))/2 > 0) ? (display.height - (30 + 105 + 125))/2 : 0}"
+					 _right="{(display.width > 474) ? (display.width - 475)/2 : (display.width - 300)/2}" 
+					 _width="{display.width > 474 ?  475 : 300}"
+					 top="0" left="0" width="{display.width}" height="{_fullDisplayHeight}"/>
+			
+			<ui:EmbeddedGallery id="embeddedGallery"
+				top="0" left="0" 
+				width="{display.width}"
+				height="{display.height}">
+				<s:Group y="{(display.width >= 434 &amp;&amp; display.height >= 214) ? display.height / 5 : display.height/2 - 64}"
+						 x="{(display.width >= 434 &amp;&amp; display.height >= 214) ? (display.width - embeddedGallery.contentWidth - 60)/2 : display.width/2 - 130}"
+						 width="{(display.width >= 434 &amp;&amp; display.height >= 214) ? embeddedGallery.contentWidth + 60 : 80}"
+						 includeInLayout="false" autoLayout="true">
+					<s:layout>
+						<s:TileLayout horizontalAlign="center"
+						  columnWidth="{(embeddedGallery.contentWidth == 165) ? 56 : (embeddedGallery.contentWidth + 60)/_embeddedGalleryButtonsNum - 5}" 
+						  rowHeight="29"/>
+						<!--  gap="{(display.width - 420)/5}" verticalAlign="middle" -->
+					</s:layout>
+					<s:Button id="galleryReplay" styleName="galleryButton"
+						    buttonMode="true" label="{display.width >= 434 &amp;&amp; display.height >= 214}"
+						    click="Observer.Notify('PLAY_BUTTON_CLICKED', {});"/>
+					<s:Button id="galleryEmail" styleName="galleryButton"
+							buttonMode="true" label="{display.width >= 434 &amp;&amp; display.height >= 214}"
+							click="Observer.Notify('OPEN_PANE', {paneName:'overlayEmailPane'});"
+							includeInLayout="{_overlayShareButtons.indexOf('email') > -1}"
+							enabled="{_overlayShareButtons.indexOf('email') > -1}"
+							visible="{_overlayShareButtons.indexOf('email') > -1}"/>
+					<s:Button id="galleryGetLink" styleName="galleryButton"
+							buttonMode="true" label="{display.width >= 434 &amp;&amp; display.height >= 214}"
+							click="Observer.Notify('OPEN_PANE', {paneName:'overlayGetLinkPane'});"
+							includeInLayout="{_overlayShareButtons.indexOf('link') > -1}"
+							enabled="{_overlayShareButtons.indexOf('link') > -1}"
+							visible="{_overlayShareButtons.indexOf('link') > -1}"/>
+					<s:Button id="galleryShare" styleName="galleryButton"
+							buttonMode="true" label="{display.width >= 434 &amp;&amp; display.height >= 214}"
+							click="clickThrough.openShareUrl('embedd');" 
+							includeInLayout="{_overlayShareButtons.indexOf('share') > -1}"
+							enabled="{_overlayShareButtons.indexOf('share') > -1}"
+							visible="{_overlayShareButtons.indexOf('share') > -1}"/>
+				</s:Group>
+				<s:VGroup gap="0" paddingBottom="0" paddingTop="0" 
+						  y="{(display.width >= 434 &amp;&amp; display.height >= 214) ? display.height * 0.35 : display.height/2 - 64}"
+						  x="{(display.width >= 434 &amp;&amp; display.height >= 214) ? 0 : display.width/2 - 70}"
+						  height="128"
+						  width="{(display.width >= 434 &amp;&amp; display.height >= 214) ? display.width : 225}"
+						  horizontalAlign="center"
+						  includeInLayout="false">
+					<s:HGroup gap="0" verticalAlign="middle">
+						<s:Button id="galleryPrevious" styleName="galleryButton"
+								  click="embeddedGalleryLayout.previous()" buttonMode="true"
+								  visible="{embeddedGalleryLayout.currentPage > 1}"
+								  label="{display.width >= 434 &amp;&amp; display.height >= 214}"/>
+						<s:DataGroup id="galleryDataGroup" buttonMode="true"  
+									 dataProvider="{embeddedGallery.clipList}"
+									 itemRenderer="codebase.worldnow.skins.EmbeddedGalleryItemRenderer" 
+									 width="{embeddedGallery.contentWidth}"
+									 height="128"
+									 horizontalCenter="0">
+							<s:layout>
+								<ui:EmbeddedGalleryLayout id="embeddedGalleryLayout"
+														  itemPadding="5"/>
+							</s:layout>
+						</s:DataGroup>
+						<s:Button id="galleryNext" styleName="galleryButton"
+								  click="embeddedGalleryLayout.next()" buttonMode="true"
+								  visible="{embeddedGalleryLayout.totalPages > embeddedGalleryLayout.currentPage}"
+								  label="{display.width >= 434 &amp;&amp; display.height >= 214}"/>
+					</s:HGroup>
+				</s:VGroup>	
+			</ui:EmbeddedGallery>
+		</s:Group>
+
+		<!-- Center play button -->
+		<s:HGroup width="{display.width}" height="{display.height}" paddingLeft="{display.width/2 - 40}"
+	    	includeInLayout="false" verticalAlign="middle">
+			<ui:PlayButton id="screenPlayButton" buttonMode="true" />
+		</s:HGroup>
+	</s:VGroup>
+</s:Application>
