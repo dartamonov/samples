@@ -1,7 +1,0 @@
-ul { list-style: none; }
-ul li { display: table-row; }
-ul li span {
-    display: table-cell;
-    width: auto;
-    padding-right: 20px;
-}
