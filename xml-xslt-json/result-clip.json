@@ -1,0 +1,132 @@
+{
+  "callbackParams": "WNVideoCanvas2MainwnVideoCanvas",
+  "feed": {
+    "@attributes": {
+      "version": "2.0"
+    },
+    "channel": {
+      "title": "WorldNowVI: Hebah-30fps-800kbps.mp4",
+      "link": "http:\/\/wnow.worldnow.com\/clip\/12171570\/vi-hebah-30fps-800kbpsmp4",
+      "description": "",
+      "pubDate": "Tuesday Feb 23, 2016",
+      "language": "en",
+      "item": {
+        "title": "VI: Hebah-30fps-800kbps.mp4",
+        "link": "http:\/\/wnow.worldnow.com\/clip\/12171570\/vi-hebah-30fps-800kbpsmp4",
+        "description": "",
+        "pubDate": "1\/28\/2016 5:15:45 AM",
+        "guid": "12171570",
+        "wn-contentclassification": "News",
+        "wn-ads": {
+          "wnsz_30": {
+            "owner": "loc",
+            "splitpct": "40",
+            "show": "true"
+          },
+          "wnsz_31": {
+            "owner": "loc",
+            "splitpct": "50",
+            "show": "true"
+          },
+          "wnsz_32": {
+            "owner": "loc",
+            "splitpct": "60",
+            "show": "true"
+          },
+          "wnsz_34": {
+            "owner": "nat",
+            "splitpct": "70",
+            "show": "true"
+          },
+          "wnsz_51": {
+            "owner": "nat",
+            "splitpct": "80",
+            "show": "true"
+          },
+          "wnsz_53": {
+            "owner": "nat",
+            "splitpct": "90",
+            "show": "true"
+          }
+        },
+        "wn-taxonomy": {
+          
+        },
+        "media-group": {
+          "media-title": "VI: Hebah-30fps-800kbps.mp4",
+          "media-description": "",
+          "media-content": [
+            {
+              "@attributes": {
+                "url": "http:\/\/wnow.videodownload.worldnow.com\/WNOW_2801201605143800000AC.mp4",
+                "type": "video\/mp4",
+                "medium": "video",
+                "filesize": "8079695",
+                "bitratebits": "1022857",
+                "bitrate": "1022",
+                "width": "640",
+                "height": "360",
+                "duration": "60"
+              }
+            },
+            {
+              "@attributes": {
+                "url": "http:\/\/wnowvod-vh.akamaihd.net\/z\/WNOW_2801201605143800000.smil\/manifest.f4m",
+                "type": "application\/f4m",
+                "medium": "video",
+                "filesize": "0",
+                "bitratebits": "",
+                "bitrate": "0",
+                "width": "0",
+                "height": "0",
+                "duration": "60"
+              }
+            },
+            {
+              "@attributes": {
+                "url": "http:\/\/wnowvod-vh.akamaihd.net\/i\/WNOW_2801201605143800000.smil\/master.m3u8",
+                "type": "application\/x-mpegURL",
+                "medium": "video",
+                "filesize": "0",
+                "bitratebits": "",
+                "bitrate": "0",
+                "width": "0",
+                "height": "0",
+                "duration": "60"
+              }
+            }
+          ],
+          "media-subTitle": [
+            {
+              "@attributes": {
+                "type": "application\/ttml+xml",
+                "lang": "en-us",
+                "href": "http:\/\/wnow.images.worldnow.com\/metadata\/12171570.ttml"
+              }
+            }
+          ],
+          "media-embed": {
+            "@attributes": {
+              "url": "http:\/\/wnow.worldnow.com\/clip\/12171570\/vi-hebah-30fps-800kbpsmp4",
+              "width": "",
+              "height": ""
+            },
+            "media-param": {
+              "@attributes": {
+                "name": "type"
+              },
+              "#text": "text\/javascript"
+            }
+          },
+          "media-thumbnail": {
+            "@attributes": {
+              "url": "http:\/\/wnow.images.worldnow.com\/images\/12171570_vkf.jpg",
+              "width": "",
+              "height": ""
+            }
+          }
+        }
+      }
+    }
+  }
+}
