@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="NYPDCollisionsApp"> 
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title></title>
+      <meta name="description" content="nypd open data test">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="/css/styles.css">
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  </head>
+  <body>
+      <div ng-controller="NYPDCollisionsController">
+        <input type="text" class="hidden" id="sortField" ng-model="sortField" ng-change="update()"></input>
+        <input type="text" class="hidden" ng-model="currentPage"></input>
+        <h4><a href="{{apiUrl}}" target="blank">{{apiUrl}}</a></h4>
+        <p ng-repeat="err in errors" class="error">Error: {{err.code}} - {{err.title}}<br/></p>
+        <div class="pagination">
+          Page size: <select ng-model="pageSize" ng-change="update()">
+            <option ng-repeat="opt in [10, 30, 50]">{{opt}}</option>
+          </select><br/>
+          Page: <span ng-repeat="page in pageNumbers">
+            <a href="{{page}}" ng-if="page != currentPage" ng-click="toPageNum($event)">{{page}}</a>
+            <span href="{{page}}" ng-if="page == currentPage">{{page}}</span>
+          <span>
+        </div>
+        <table>
+          <tr class="sortby">
+            <th class="asc">Date</th>
+            <th>Time</th>
+            <th>Borough</th>
+            <th>Zip_code</th>
+            <th colspan="2">Location</th>
+            <th>Street</th>
+            <th>Contributing Factor</th>
+          </tr>
+          <tr class="searchby">
+            <form ng-submit="searchByFilter()">
+              <input type="submit" value="" class="submit">
+              <th><input type="text" ng-model="searchDate"></input></th>
+              <th><input type="text" ng-model="searchTime"></input></th>
+              <th><input type="text" ng-model="searchBorough"></input></th>
+              <th><input type="text" ng-model="searchZip"></input></th>
+              <th colspan="2">
+                <input type="text" ng-model="searchLocation">
+                <input type="text" ng-model="searchRadius" class="radius">
+              </th>
+              <th></th>
+              <th></th>
+            </form> 
+          </tr>
+          <tr ng-repeat="collision in collisions">
+            <td>{{collision.attributes.date.substring(0, collision.attributes.date.indexOf("T"))}}</td>
+            <td>{{collision.attributes.time}}</td>
+            <td>{{collision.attributes.borough}}</td>
+            <td>{{collision.attributes.zip_code}}</td>
+            <td class="location" ng-click="searchByLocation($event)" colspan="2">{{collision.attributes.latitude}},{{collision.attributes.longitude}}</td>
+            <td>{{collision.attributes.on_street_name + " and " + collision.attributes.off_street_name}}</td>
+            <td>{{collision.attributes.contributing_factor_vehicle_1}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.js"></script>
+      <script type="text/javascript" src="/js/app.js"></script>
+      <script type="text/javascript" src="/js/controllers/nypd-collisions.js"></script>
+      <script type="text/javascript" src="/js/controllers/simple-ui.js"></script>
+  </body>
+</html>

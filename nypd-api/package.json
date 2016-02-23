@@ -1,0 +1,17 @@
+{
+  "name": "nypd_api",
+  "version": "1.0.0",
+  "description": "NYPD open data test with Node.js",
+  "keywords": [
+    "node.js",
+    "nypd api"
+  ],
+  "author": "Dmitry Artamonov",
+  "dependencies": {
+    "app-root-path": "^1.0.0",
+    "express": "^4.3.1"
+  },
+  "engines": {
+    "node": "5.5.0"
+  }
+}

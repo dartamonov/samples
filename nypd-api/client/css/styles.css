@@ -1,0 +1,20 @@
+.hidden, .submit { display: none; }
+
+table tr td {
+    width: auto;
+    padding-right: 10px;
+}
+
+.sortby > th:nth-child(-n+4), .location { 
+	cursor: pointer;
+	background-color: #eee;
+}
+.location:hover { background-color: #ddd; }
+
+tr.sortby th.asc { background-color: #8dbdd8; background: url(asc.gif) no-repeat 99%; }
+tr.sortby th.desc { background-color: #8dbdd8; background: url(desc.gif) no-repeat 99%; }
+
+.radius { width: 30px; }
+
+.pagination { margin-bottom: 20px; }
+.error { color: red; }
