@@ -1,0 +1,1029 @@
+/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+template,
+[hidden] {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: 0;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change font properties to `inherit` in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Restore the font weight unset by the previous rule.
+ */
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+ */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+[data-video] {
+  display: block;
+  font-size: 14px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease-in-out 0s;
+  width: 100%;
+}
+
+[data-video].fullscreen {
+  height: 100%;
+  width: 100%;
+}
+
+[data-video] .x-video-inner {
+  height: auto;
+  position: relative;
+  width: 100%;
+}
+
+[data-video] .x-video-inner .x-player-video {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+[data-video].x-player-inline {
+  background-color: #000;
+  height: 100%;
+}
+
+[data-video].x-player-inline .x-video-inner {
+  height: 100%;
+}
+
+[data-video].x-player-inline .x-player-close-btn {
+  display: none;
+}
+
+[data-video].x-player-inline.x--active-mode .x-player-close-btn {
+  display: block;
+}
+
+[data-video].x-player-inline--transparent {
+  background-color: transparent;
+}
+
+[data-video].x-player-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  bottom: 0;
+  display: none;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+  z-index: 100;
+}
+
+[data-video].x-player-overlay.x-video--open {
+  display: block;
+}
+
+[data-video].x-player-overlay.x-video--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+[data-video].x-player-overlay .x-video-inner {
+  margin: 0 auto;
+  position: relative;
+}
+
+[data-video] .x-player-close-btn,
+[data-video] .x-shortcuts-close-btn {
+  background: #f2f4f5;
+  border: 0;
+  border-radius: 15px;
+  color: #000;
+  cursor: pointer;
+  height: 30px;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  z-index: 2247483648;
+}
+
+[data-video] .x-player-close-btn.show,
+[data-video] .x-shortcuts-close-btn.show {
+  opacity: 1;
+}
+
+[data-video] .x-player-close-btn::before, [data-video] .x-player-close-btn::after,
+[data-video] .x-shortcuts-close-btn::before,
+[data-video] .x-shortcuts-close-btn::after {
+  background: #000;
+  content: '';
+  display: block;
+  height: 18px;
+  position: absolute;
+  right: 14px;
+  top: 6px;
+  transform: rotate(45deg);
+  width: 2px;
+}
+
+[data-video] .x-player-close-btn::after,
+[data-video] .x-shortcuts-close-btn::after {
+  transform: rotate(135deg);
+}
+
+[data-video] .x-player-close-btn:hover,
+[data-video] .x-shortcuts-close-btn:hover {
+  background: #fff;
+}
+
+[data-video] .x-player-close-btn:focus,
+[data-video] .x-shortcuts-close-btn:focus {
+  outline-color: #2b9cd8;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+
+.x-player-controls {
+  background-color: #000;
+  bottom: 0;
+  color: #fff;
+  left: 0;
+  opacity: 0;
+  padding: 0 10px 10px;
+  position: absolute;
+  right: 0;
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 2147483647;
+}
+
+.x-player-controls::before {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%);
+  content: '';
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6000000',GradientType=0);
+  height: 50px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 100%;
+}
+
+.x-player-controls.show {
+  opacity: 1;
+}
+
+.x-player-controls.iphone {
+  display: none;
+}
+
+.x-player-controls p {
+  margin: 0 0 7px;
+}
+
+.x-player-controls div {
+  box-sizing: border-box;
+}
+
+.x-player-controls .x-controls-row {
+  -ms-flex-align: end;
+  align-items: flex-end;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.x-player-controls .x-controls-row * {
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.x-player-controls .x-controls-row.flex-end {
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.x-player-controls .x-controls-group {
+  margin-bottom: 5px;
+  padding: 0 12px;
+}
+
+.x-player-controls .x-controls-button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  opacity: 0.8;
+  position: relative;
+  width: 25px;
+}
+
+.x-player-controls .x-controls-button:hover {
+  opacity: 1;
+}
+
+.x-player-controls .x-controls-button:focus {
+  outline-color: #2b9cd8;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+
+.x-player-controls .x-controls-button--play {
+  background-image: url(../images/video-sprite.svg);
+  background-position: 0 -48px;
+}
+
+.x-player-controls .x-controls-button--pause {
+  background-image: url(../images/video-sprite.svg);
+  background-position: 0 -72px;
+  display: none;
+}
+
+.x-player-controls .x-controls-button--mute {
+  background-image: url(../images/video-sprite.svg);
+  background-position: 0 0;
+}
+
+.x-player-controls .x-controls-button--unmute {
+  background-image: url(../images/video-sprite.svg);
+  background-position: 0 -24px;
+  display: none;
+}
+
+.x-player-controls .x-controls-button--fullscreenon {
+  background-image: url(../images/video-sprite.svg);
+  background-position: 0 -96px;
+}
+
+.x-player-controls .x-controls-button--fullscreenoff {
+  background-image: url(../images/video-sprite.svg);
+  background-position: 0 -120px;
+  display: none;
+}
+
+.x-player-controls .x-controls-button--captionon {
+  background-image: url(../images/video-sprite.svg);
+  background-position: 0 -144px;
+}
+
+.x-player-controls .x-controls-button--captionoff {
+  background-image: url(../images/video-sprite.svg);
+  background-position: 0 -168px;
+  display: none;
+}
+
+.x-player-controls .x-controls-button--shortcuts {
+  background-image: url(../images/video-sprite.svg);
+  background-position: 0 -191px;
+}
+
+.x-player-controls .x-controls-shortcuts-group.mobile {
+  display: none;
+}
+
+.x-player-controls .x-controls-seekbar {
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-bottom: 13px;
+}
+
+.x-player-controls .x-controls-seekbar input {
+  width: 100%;
+}
+
+.x-player-controls .x-controls-seekbar .x-controls-inputtime {
+  background: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  color: #fff;
+  height: 40px;
+  left: 50%;
+  margin-left: -30px;
+  position: absolute;
+  text-align: center;
+  top: -50px;
+  width: 60px;
+}
+
+.x-player-controls .x-controls-seekbar .x-controls-inputtime:focus {
+  outline-color: #2b9cd8;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+
+.x-player-controls .x-controls-currenttime {
+  display: inline;
+  margin: 0;
+}
+
+.x-player-controls .x-controls-duration {
+  float: right;
+  margin: 0;
+}
+
+.x-player-controls .x-controls-volume-group {
+  font-size: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out 0s;
+  white-space: nowrap;
+  width: 54px;
+}
+
+.x-player-controls .x-controls-volume-group:hover, .x-player-controls .x-controls-volume-group.open {
+  width: 144px;
+}
+
+.x-player-controls .x-controls-volume-group.mobile {
+  display: none;
+}
+
+.x-player-controls .x-controls-toggle-mute {
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 22px 0 6px;
+}
+
+.x-player-controls .x-controls-volume-bar {
+  display: inline-block;
+  margin-bottom: 7px;
+  vertical-align: bottom;
+  width: 66px;
+}
+
+.x-player-notification-container {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2247483647;
+}
+
+.x-player-notification-container .x-player-notification {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  height: 176px;
+  left: 50%;
+  margin-left: -88px;
+  margin-top: -88px;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  top: 45%;
+  transition: all 0.3s ease-in-out 0s;
+  vertical-align: middle;
+  visibility: hidden;
+  width: 176px;
+}
+
+.x-player-notification-container .x-player-notification.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.x-player-notification-container .x-player-notification .x-icon {
+  background-image: url(../images/video-sprite.svg);
+  background-size: 80px;
+  display: block;
+  height: 80px;
+  left: 50px;
+  position: absolute;
+  top: 50px;
+  width: 80px;
+}
+
+.x-player-notification-container .x-player-notification--play .x-icon {
+  background-position: 0 -162px;
+}
+
+.x-player-notification-container .x-player-notification--pause .x-icon {
+  background-position: 0 -242px;
+}
+
+.x-player-notification-container .x-player-notification.mobile {
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+  width: 100px;
+}
+
+.x-player-notification-container .x-player-notification.mobile .x-icon {
+  background-size: 60px;
+  height: 60px;
+  left: 20px;
+  top: 20px;
+  width: 60px;
+}
+
+.x-player-notification-container .mobile.x-player-notification--play .x-icon {
+  background-position: 0 -120px;
+}
+
+.x-player-notification-container .mobile.x-player-notification--pause .x-icon {
+  background-position: 0 -180px;
+}
+
+.x-player-inline.x--background-mode .x-player-notification {
+  display: none;
+}
+
+.x-player-shortcuts-container {
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.3s ease-in-out 0s;
+  visibility: hidden;
+  width: 100%;
+  z-index: 2247483646;
+}
+
+.x-player-shortcuts-container.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.x-player-shortcuts-container .x-shortcuts-info {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  display: inline-block;
+  padding: 10px 0;
+  position: relative;
+  text-align: left;
+  top: -20px;
+}
+
+.x-player-shortcuts-container .x-shortcuts-info ul {
+  color: #fff;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 10px 5%;
+  vertical-align: top;
+  width: 39%;
+}
+
+.x-player-shortcuts-container .x-shortcuts-info h4 {
+  clear: both;
+  color: #fff;
+  font-size: 18px;
+  font-weight: lighter;
+  margin: 0 auto;
+  padding: 10px 0 0 30px;
+}
+
+.x-player-shortcuts-container .x-shortcuts-info li {
+  clear: both;
+  display: block;
+  font-size: 13px;
+  list-style-type: none;
+  margin: 0;
+  padding: 4px 0;
+  width: auto;
+}
+
+.x-player-shortcuts-container .x-shortcuts-info span {
+  float: right;
+  font-weight: bold;
+}
+
+.x-player-shortcuts-container .x-shortcuts-close-btn {
+  opacity: 1;
+}
+
+.x-range-control {
+  padding: 6px 0;
+}
+
+.x-range-control .x-range-control-thermometer {
+  background-color: #155879;
+  height: 2px;
+  position: relative;
+  width: 100%;
+}
+
+.x-range-control .x-range-control-handle {
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 14px;
+  margin-left: -10px;
+  position: absolute;
+  top: -6px;
+  width: 14px;
+  z-index: 20;
+}
+
+.x-range-control .x-range-control-fill {
+  background-color: #2b9cd8;
+  height: 100%;
+  position: absolute;
+  width: 0%;
+  z-index: 10;
+}
+
+.x-controls-hidden-range:focus ~ .x-range-control .x-range-control-handle {
+  outline-color: #2b9cd8;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+
+@media screen and (max-width: 600px) {
+  .x-controls-group {
+    padding: 0 10px;
+  }
+}
+
+.x-content-banner {
+  height: 350px;
+  border-top: 0;
+  margin-bottom: 20px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.x-content-banner.overlay-bg .x-button--solid {
+  position: absolute;
+}
+
+.x-button--solid {
+  -ms-flex-order: 0;
+  order: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -ms-flex-item-align: auto;
+  -ms-grid-row-align: auto;
+  align-self: auto;
+  background: #1a6992;
+  text-decoration: none;
+  min-width: 200px;
+  font-size: 17px;
+  line-height: 45px;
+  border-radius: 40px;
+  outline: none;
+  display: inline-block;
+  position: relative;
+  margin: 0 0 20px 0;
+  border: 1px solid #1a6992;
+  cursor: pointer;
+  padding: unit-calc(14 20);
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+}
+
+.x-button--solid:focus {
+  outline-color: #2b9cd8;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+
+.x-shortcuts-list li {
+  max-width: 300px;
+  width: 100%;
+}
+
+.x-shortcuts-list li span {
+  float: right;
+  font-weight: bold;
+}
+
+.x-code-area {
+  min-height: 100px;
+  width: 100%;
+}
+
+.x-code-area.--main {
+  height: 350px;
+}
+
+.x--vh {
+  position: absolute !important;
+  display: block;
+  visibility: visible;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+}

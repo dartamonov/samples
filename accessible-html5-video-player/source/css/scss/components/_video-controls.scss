@@ -1,0 +1,437 @@
+$videoSprite: '../images/video-sprite.svg';
+
+.x-player-controls {
+  background-color: $black; // rgba(0, 0, 0, 1)
+  bottom: 0;
+  color: $white;
+  left: 0;
+  opacity: 0;
+  padding: 0 10px 10px;
+  position: absolute;
+  right: 0;
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 2147483647;
+
+  &::before {
+    background: -moz-linear-gradient(top, $black0 0%, $black 100%);
+    background: -webkit-linear-gradient(top, $black0 0%, $black 100%);
+    background: linear-gradient(to bottom, $black0 0%, $black 100%);
+    content: '';
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6000000',GradientType=0);
+    height: 50px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 100%;
+  }
+
+  &.show {
+    opacity: 1;
+  }
+
+  &.iphone {
+    display: none;
+  }
+
+  p {
+    margin: 0 0 7px;
+  }
+
+  div {
+    box-sizing: border-box;
+  }
+
+  .x-controls-row {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+
+    * {
+      -webkit-touch-callout: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    &.flex-end {
+      justify-content: flex-end;
+    }
+   }
+
+  .x-controls-group {
+    margin-bottom: 5px;
+    padding: 0 12px;
+   }
+
+   // Button
+  .x-controls-button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 0;
+    color: $white;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    opacity: 0.8;
+    position: relative;
+    width: 25px;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus {
+      outline-color: $blueSky;
+      outline-style: dotted;
+      outline-width: 2px;
+    }
+   }
+
+  .x-controls-button--play {
+    background-image: url(#{$videoSprite});
+    background-position: 0 -48px;
+   }
+
+  .x-controls-button--pause {
+    background-image: url(#{$videoSprite});
+    background-position: 0 -72px;
+    display: none;
+   }
+
+  .x-controls-button--mute {
+    background-image: url(#{$videoSprite});
+    background-position: 0 0;
+   }
+
+  .x-controls-button--unmute {
+    background-image: url(#{$videoSprite});
+    background-position: 0 -24px;
+    display: none;
+   }
+
+  .x-controls-button--fullscreenon {
+    background-image: url(#{$videoSprite});
+    background-position: 0 -96px;
+   }
+
+  .x-controls-button--fullscreenoff {
+    background-image: url(#{$videoSprite});
+    background-position: 0 -120px;
+    display: none;
+   }
+
+  .x-controls-button--captionon {
+    background-image: url(#{$videoSprite});
+    background-position: 0 -144px;
+   }
+
+  .x-controls-button--captionoff {
+    background-image: url(#{$videoSprite});
+    background-position: 0 -168px;
+    display: none;
+   }
+
+  .x-controls-button--shortcuts {
+    background-image: url(#{$videoSprite});
+    background-position: 0 -191px;
+   }
+
+  .x-controls-shortcuts-group.mobile {
+    display: none;
+  }
+
+   // Seek bar
+  .x-controls-seekbar {
+    flex-grow: 1;
+    margin-bottom: 13px;
+
+    input {
+      width: 100%;
+      }
+
+    .x-controls-inputtime {
+      background: none;
+      background-color: $black50;
+      border: 0;
+      color: $white;
+      height: 40px;
+      left: 50%;
+      margin-left: -30px;
+      position: absolute;
+      text-align: center;
+      top: -50px;
+      width: 60px;
+
+      &:focus {
+        outline-color: $blueSky;
+        outline-style: dotted;
+        outline-width: 2px;
+      }
+      }
+   }
+
+  .x-controls-currenttime {
+    display: inline;
+    margin: 0;
+   }
+
+  .x-controls-duration {
+    float: right;
+    margin: 0;
+   }
+
+   // Volume
+  .x-controls-volume-group {
+    font-size: 0;
+    overflow: hidden;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    white-space: nowrap;
+    width: 54px;
+
+    &:hover, &.open {
+      width: 144px;
+    }
+
+    &.mobile {
+      display: none;
+    }
+   }
+
+  .x-controls-toggle-mute {
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 22px 0 6px;
+   }
+
+  .x-controls-volume-bar {
+    display: inline-block;
+    margin-bottom: 7px;
+    vertical-align: bottom;
+    width: 66px;
+   }
+}
+
+// Center notification
+.x-player-notification-container {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2247483647;
+
+  .x-player-notification {
+    background-color: $black75;
+    border-radius: 50%;
+    color: $white;
+    display: inline-block;
+    height: 176px;
+    left: 50%;
+    margin-left: -88px;
+    margin-top: -88px;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: 45%;
+    transition: all 0.3s ease-in-out 0s;
+    vertical-align: middle;
+    visibility: hidden;
+    width: 176px;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .x-icon {
+      background-image: url(#{$videoSprite});
+      background-size: 80px;
+      display: block;
+      height: 80px;
+      left: 50px;
+      position: absolute;
+      top: 50px;
+      width: 80px;
+      }
+
+    &--play .x-icon {
+      background-position: 0 -162px;
+    }
+
+    &--pause .x-icon {
+      background-position: 0 -242px;
+    }
+
+    &.mobile {
+      height: 100px;
+      margin-left: -50px;
+      margin-top: -50px;
+      width: 100px;
+
+      .x-icon {
+        background-size: 60px;
+        height: 60px;
+        left: 20px;
+        top: 20px;
+        width: 60px;
+      }
+    }
+   }
+
+  .mobile.x-player-notification--play .x-icon {
+    background-position: 0 -120px;
+   }
+
+  .mobile.x-player-notification--pause .x-icon {
+    background-position: 0 -180px;
+   }
+}
+
+.x-player-inline.x--background-mode {
+  .x-player-notification {
+    display: none;
+  }
+}
+
+// Shortcuts info
+.x-player-shortcuts-container {
+  align-items: center;
+  background-color: $black50;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.3s ease-in-out 0s;
+  visibility: hidden;
+  width: 100%;
+  z-index: 2247483646;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .x-shortcuts-info {
+    background-color: $black75;
+    color: $white;
+    display: inline-block;
+    padding: 10px 0;
+    position: relative;
+    text-align: left;
+    top: -20px;
+
+    ul {
+      color: $white;
+      display: inline-block;
+      margin: 0 auto;
+      //max-width: 200px;
+      padding: 10px 5%;
+      vertical-align: top;
+      width: 39%;
+    }
+
+    h4 {
+      clear: both;
+      color: $white;
+      font-size: 18px;
+      font-weight: lighter;
+      margin: 0 auto;
+      padding: 10px 0 0 30px;
+    }
+
+    li {
+      clear: both;
+      display: block;
+      font-size: 13px;
+      list-style-type: none;
+      margin: 0;
+      padding: 4px 0;
+      width: auto;
+    }
+
+    span {
+      float: right;
+      font-weight: bold;
+    }
+  }
+
+  .x-shortcuts-close-btn {
+    opacity: 1;
+  }
+}
+
+// Range controls
+.x-range-control {
+  padding: 6px 0;
+
+  .x-range-control-thermometer {
+    background-color: $blueMoon;
+    height: 2px;
+    position: relative;
+    width: 100%;
+   }
+
+  .x-range-control-handle {
+    background-color: $white;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 14px;
+    margin-left: -10px;
+    position: absolute;
+    top: -6px;
+    width: 14px;
+    z-index: 20;
+
+      // &.error::before {
+      //    position: absolute;
+      //    top: -110px;
+      //    left: 50%;
+      //    content: 'Wrong time format';
+      //    width: 100px;
+      //    color: $redCherry;
+      //    background-color: $white-75;
+      //    font-size: 12px;
+      //    line-height: 1.3em;
+      //    font-weight: bold;
+      //    text-align: center;
+      //    margin-left: -50px;
+      //    padding: 10px 5px;
+      //    border-radius: 7px;
+      // }
+      //
+      // &.error .x-controls-inputtime {
+      //    background-color: $redCherry;
+      // }
+   }
+
+  .x-range-control-fill {
+    background-color: $blueSky;
+    height: 100%;
+    position: absolute;
+    width: 0%;
+    z-index: 10;
+   }
+}
+
+.x-controls-hidden-range:focus ~ .x-range-control .x-range-control-handle {
+  outline-color: $blueSky;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+
+@media screen and (max-width: 600px) {
+  .x-controls-group {
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "video-player",
+  "version": "1.0.0",
+  "description": "Accessible html5 video player",
+  "main": "./public/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dartamonov/samples/accessible-html5-video-player/video-player.git"
+  },
+  "author": "Dmitry Artamonov",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-copy": "0.0.2",
+    "gulp-rename": "^1.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^2.0.0"
+  },
+  "homepage": "https://github.com/dartamonov/samples/accessible-html5-video-player/public",
+  "engines": {
+    "node": ">=0.1"
+  }
+}

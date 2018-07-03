@@ -1,0 +1,89 @@
+.x-content-banner {
+  //width: 100%;
+  height: 350px;
+  //border-bottom: 1px solid $black;
+  border-top: 0;
+  margin-bottom: 20px;
+
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: flex-start;
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  &.overlay-bg {
+//    height: 100%;
+
+    .x-button--solid {
+      position: absolute;
+    }
+  }
+}
+
+
+$blue-ocean: #1a6992 !default;
+.x-button--solid {
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+
+  background: $blue-ocean;
+  text-decoration: none;
+  min-width:200px;
+  font-size: 17px;
+  line-height: 45px;
+  border-radius: 40px;
+  outline: none;
+  display: inline-block;
+  position: relative;
+  margin: 0 0 20px 0;
+  border: 1px solid $blue-ocean;
+  cursor: pointer;
+  padding: unit-calc(14 20);
+  text-align: center;
+  text-decoration: none;
+  color: $white;
+  font-weight: 400;
+
+  &:focus {
+      outline-color: $blueSky;
+      outline-style: dotted;
+      outline-width: 2px;
+  }
+}
+
+.x-shortcuts-list li {
+  max-width: 300px;
+  width: 100%;
+
+  span {
+    float: right;
+    font-weight: bold;
+  }
+}
+
+.x-code-area {
+  min-height: 100px;
+  width: 100%;
+
+  &.--main {
+    height: 350px;
+  }
+}

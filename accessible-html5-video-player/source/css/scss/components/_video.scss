@@ -1,0 +1,161 @@
+// Video player
+
+// colors
+//$white-75: rgba(255, 255, 255, 0.75) !default;
+$white: #fff !default;
+$black: #000 !default;
+$black75: rgba(0, 0, 0, .75) !default;
+$black50: rgba(0, 0, 0, .5) !default;
+$black0: rgba(0, 0, 0, 0) !default;
+$grey2: #f2f4f5 !default;
+$blueSky: #2b9cd8 !default;
+$blueMoon: #155879 !default;
+$redCherry: #c90318 !default;
+
+// component
+[data-video] {
+  display: block;
+  font-size: 14px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  -ms-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  width: 100%;
+
+  &.fullscreen {
+    height: 100%;
+    width: 100%;
+  }
+
+  // &.x-player-overlay.fullscreen {
+  //   .x-video-inner {
+  //     max-width: 100%;
+  //   }
+  // }
+
+  .x-video-inner {
+    height: auto;
+    position: relative;
+    width: 100%;
+
+    .x-player-video {
+      height: 100%;
+      position: relative;
+      width: 100%;
+    }
+  }
+
+// TODO: remove x-player-inline. It should be default player
+
+  &.x-player-inline {
+    background-color: $black;
+    height: 100%;
+
+    .x-video-inner {
+      height: 100%;
+    }
+
+    .x-player-close-btn {
+      display: none;
+    }
+    &.x--active-mode {
+      .x-player-close-btn {
+        display: block;
+      }
+    }
+
+    &--transparent {
+      background-color: transparent;
+    }
+  }
+
+  &.x-player-overlay {
+    background-color: $black75;
+    bottom: 0;
+    display: none;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: 100;
+
+    &.x-video--open {
+      display: block;
+    }
+
+    &.x-video--visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .x-video-inner {
+      margin: 0 auto;
+      position: relative;
+    }
+
+      // .x-player-video {
+      //     position:relative;
+      //     width:100%;
+      //     height:100%;
+      // }
+  }
+
+  .x-player-close-btn,
+  .x-shortcuts-close-btn {
+    background: $grey2;
+    border: 0;
+    border-radius: 15px;
+    color: $black;
+    cursor: pointer;
+    height: 30px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    z-index: 2247483648;
+
+    &.show {
+      opacity: 1;
+    }
+
+    &::before,
+    &::after {
+      background: $black;
+      content: '';
+      display: block;
+      height: 18px;
+      position: absolute;
+      right: 14px;
+      top: 6px;
+      -moz-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      width: 2px;
+    }
+
+    &::after {
+      -moz-transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg);
+    }
+
+    &:hover {
+      background: $white;
+    }
+
+    &:focus {
+      outline-color: $blueSky;
+      outline-style: dotted;
+      outline-width: 2px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+// Vendors
+// contains all the CSS files from
+// external libraries and frameworks
+@import 'scss/vendors';
+
+// Components
+// Components are more mature
+// elements that are self contained
+// and reusable through the UI
+@import 'scss/components';
+
+// Helpers
+// Helpers are overrides
+@import 'scss/helpers';
