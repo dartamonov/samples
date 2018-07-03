@@ -1,5 +1,5 @@
 # Accessible HTML5 video player
-Demo - [https://github.com/dartamonov/samples/accessible-html5-video-player/public](https://github.com/dartamonov/samples/accessible-html5-video-player/public)
+Demo - [https://accessible-html5-player.herokuapp.com/](https://accessible-html5-player.herokuapp.com/)
 
 ### Setup
 * cd to /accessible-html5-video-player

@@ -22,7 +22,7 @@
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^2.0.0"
   },
-  "homepage": "https://github.com/dartamonov/samples/accessible-html5-video-player/public",
+  "homepage": "https://accessible-html5-player.herokuapp.com/",
   "engines": {
     "node": ">=0.1"
   }
