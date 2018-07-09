@@ -1,0 +1,421 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart component handles accordion with a header 1`] = `
+<div
+  aria-expanded={false}
+  className="accordion"
+>
+  <div
+    className="hg-panel hg-panel--action-right-at-768 accordion__title"
+  >
+    <div
+      className="hg-panel__content"
+    >
+      <div
+        className="hgroup"
+      >
+        <h3>
+          Pick channels to order
+        </h3>
+      </div>
+    </div>
+    <div
+      className="hg-panel__action"
+    >
+      <button
+        aria-expanded="undefined"
+        className="x-body3 x-button--text accordion__trigger"
+        data-tracking={Object {}}
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Show Channels
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    className="accordion__body accordion__body--no-panel margin-top24"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="margin-top12 col-md-6 col-xs-12"
+      >
+        <div
+          className="customize-channel-panel"
+          style={
+            Object {
+              "backgroundImage": "url(backgroundImageUrl.png)",
+            }
+          }
+        >
+          <div
+            className="customize-channel-panel__content"
+          >
+            <div
+              className="customize-channel-panel__content--top"
+            >
+              <span
+                className="helper"
+              />
+              <img
+                alt="Starz Logo"
+                src="logoUrl.png"
+              />
+            </div>
+            <div
+              className="customize-channel-panel__content--bottom"
+            >
+              <p>
+                <span
+                  className="x-body3"
+                >
+                  Starz®, Starz Edge™, Starz Cinema®, Starz Kids & Family® & more
+                </span>
+              </p>
+            </div>
+          </div>
+          <div
+            className="customize-channel-panel__input"
+          >
+            <div
+              className="x-field--checkbox"
+            >
+              <div>
+                <label
+                  className="x-checkbox-label x-body2"
+                  htmlFor="610379779"
+                >
+                  <span
+                    className="vh"
+                  >
+                    Starz
+                     
+                  </span>
+                  <span
+                    className="hg-price"
+                  >
+                    <span
+                      className="hg-price__icon"
+                    >
+                      $
+                    </span>
+                    <span
+                      className="hg-price__dollars"
+                    >
+                      10
+                    </span>
+                    <span
+                      className="hg-price__cents"
+                    >
+                      .99
+                    </span>
+                    <span>
+                      /mo
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="margin-top12 col-md-6 col-xs-12"
+      >
+        <div
+          className="customize-channel-panel"
+          style={
+            Object {
+              "backgroundImage": "url(backgroundImageUrl.png)",
+            }
+          }
+        >
+          <div
+            className="customize-channel-panel__content"
+          >
+            <div
+              className="customize-channel-panel__content--top"
+            >
+              <span
+                className="helper"
+              />
+              <img
+                alt="HBO Logo"
+                src="logoUrl.png"
+              />
+            </div>
+            <div
+              className="customize-channel-panel__content--bottom"
+            >
+              <p>
+                <span
+                  className="x-body3"
+                >
+                  HBO®, HBO 2®, HBO Comedy®, HBO Latino®, HBO Family & more
+                </span>
+              </p>
+            </div>
+          </div>
+          <div
+            className="customize-channel-panel__input"
+          >
+            <div
+              className="x-field--checkbox"
+            >
+              <div>
+                <label
+                  className="x-checkbox-label x-body2"
+                  htmlFor="610371595"
+                >
+                  <span
+                    className="vh"
+                  >
+                    HBO
+                     
+                  </span>
+                  <span
+                    className="hg-price"
+                  >
+                    <span
+                      className="hg-price__icon"
+                    >
+                      $
+                    </span>
+                    <span
+                      className="hg-price__dollars"
+                    >
+                      19
+                    </span>
+                    <span
+                      className="hg-price__cents"
+                    >
+                      .99
+                    </span>
+                    <span>
+                      /mo
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ChannelAccordion component handles accordion with a header 1`] = `
+<div
+  aria-expanded={false}
+  className="accordion"
+>
+  <div
+    className="hg-panel hg-panel--action-right-at-768 accordion__title"
+  >
+    <div
+      className="hg-panel__content"
+    >
+      <div
+        className="hgroup"
+      >
+        <h3>
+          Pick channels to order
+        </h3>
+      </div>
+    </div>
+    <div
+      className="hg-panel__action"
+    >
+      <button
+        aria-expanded="undefined"
+        className="x-body3 x-button--text accordion__trigger"
+        data-tracking={Object {}}
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Show Channels
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    className="accordion__body accordion__body--no-panel margin-top24"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="margin-top12 col-md-6 col-xs-12"
+      >
+        <div
+          className="customize-channel-panel"
+          style={
+            Object {
+              "backgroundImage": "url(backgroundImageUrl.png)",
+            }
+          }
+        >
+          <div
+            className="customize-channel-panel__content"
+          >
+            <div
+              className="customize-channel-panel__content--top"
+            >
+              <span
+                className="helper"
+              />
+              <img
+                alt="Starz Logo"
+                src="logoUrl.png"
+              />
+            </div>
+            <div
+              className="customize-channel-panel__content--bottom"
+            >
+              <p>
+                <span
+                  className="x-body3"
+                >
+                  Starz®, Starz Edge™, Starz Cinema®, Starz Kids & Family® & more
+                </span>
+              </p>
+            </div>
+          </div>
+          <div
+            className="customize-channel-panel__input"
+          >
+            <div
+              className="x-field--checkbox"
+            >
+              <div>
+                <label
+                  className="x-checkbox-label x-body2"
+                  htmlFor="610379779"
+                >
+                  <span
+                    className="vh"
+                  >
+                    Starz
+                     
+                  </span>
+                  <span
+                    className="hg-price"
+                  >
+                    <span
+                      className="hg-price__icon"
+                    >
+                      $
+                    </span>
+                    <span
+                      className="hg-price__dollars"
+                    >
+                      10
+                    </span>
+                    <span
+                      className="hg-price__cents"
+                    >
+                      .99
+                    </span>
+                    <span>
+                      /mo
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="margin-top12 col-md-6 col-xs-12"
+      >
+        <div
+          className="customize-channel-panel"
+          style={
+            Object {
+              "backgroundImage": "url(backgroundImageUrl.png)",
+            }
+          }
+        >
+          <div
+            className="customize-channel-panel__content"
+          >
+            <div
+              className="customize-channel-panel__content--top"
+            >
+              <span
+                className="helper"
+              />
+              <img
+                alt="HBO Logo"
+                src="logoUrl.png"
+              />
+            </div>
+            <div
+              className="customize-channel-panel__content--bottom"
+            >
+              <p>
+                <span
+                  className="x-body3"
+                >
+                  HBO®, HBO 2®, HBO Comedy®, HBO Latino®, HBO Family & more
+                </span>
+              </p>
+            </div>
+          </div>
+          <div
+            className="customize-channel-panel__input"
+          >
+            <div
+              className="x-field--checkbox"
+            >
+              <div>
+                <label
+                  className="x-checkbox-label x-body2"
+                  htmlFor="610371595"
+                >
+                  <span
+                    className="vh"
+                  >
+                    HBO
+                     
+                  </span>
+                  <span
+                    className="hg-price"
+                  >
+                    <span
+                      className="hg-price__icon"
+                    >
+                      $
+                    </span>
+                    <span
+                      className="hg-price__dollars"
+                    >
+                      19
+                    </span>
+                    <span
+                      className="hg-price__cents"
+                    >
+                      .99
+                    </span>
+                    <span>
+                      /mo
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,166 @@
+@import "./cartpanel.scss";
+
+// Hide primary cart on show summary on mobile
+// Do the reverse above mobile
+.hg-cart {
+  left: 0;
+  right: 0;
+  top: calc(100% - 75px); //minus the height of visible header
+  bottom: 0;
+  z-index: 300;  //TODO: DeEscalate z-index radios have 200 currently
+  background-color: #F2F4F4;
+  transition: top 0.5s ease-in-out;
+  will-change: top;
+
+  @include breakpoint($bpLarge) {
+    will-change: auto;
+    position: static;
+    background: none;
+    overflow: visible;
+  }
+
+  &.hg-cart--summary {
+    top: 0; //minus the height of visible header
+  }
+}
+
+.hg-cart__content {
+  overflow: hidden;
+}
+
+.hg-cart__content--primary {
+  display: none;
+
+  @include breakpoint($bpLarge) {
+    display: block;
+  }
+}
+
+.hg-cart__content--summary {
+  display: none;
+
+  .hg-cart--summary & {
+    display: block;
+
+    @include breakpoint($bpLarge) {
+      display: none;
+    }
+  }
+}
+
+.hg-cart__summary-content {
+  display: none;
+  overflow: auto;
+  max-height: 80vh; // we want it large enough to show the maximum amount of content, but not so large that it pushes the "Need help?" message off the screen.
+
+  @include breakpoint($bpLarge) {
+    display: block;
+  }
+
+  .hg-cart--summary & {
+    display: block;
+  }
+}
+
+.hg-cart__summary-header {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  @include breakpoint($bpLarge) {
+    display: none;
+  }
+
+  .hg-cart--summary & {
+    display: none;
+  }
+}
+
+.hg-cart__panel--nav {
+  display: none;
+  text-align: center;
+  background: $white;
+  margin-bottom: unit-calc(3px);
+
+  @include breakpoint($bpLarge) {
+    display: flex;
+  }
+
+  .hg-cart--review & {
+    display: flex;
+  }
+}
+
+.hg-cart__panel--mobile-header {
+  display: none;
+
+  .hg-cart--summary & {
+    display: block;
+
+    @include breakpoint($bpLarge) {
+      display: none;
+    }
+  }
+}
+
+.hg-cart__toggle-summary {
+  @include breakpoint($bpLarge) {
+    display: none;
+  }
+
+  .hg-cart--has-summary-on-desktop & {
+    @include breakpoint($bpLarge) {
+      display: inline-block;
+    }
+  }
+}
+
+.hg-cart__toggle-summary--icon {
+  @include breakpoint($bpLarge) {
+    transition: transform 0.5s ease-in-out;
+    transform: rotate(0);
+  }
+
+  .hg-cart--summary & {
+    @include breakpoint($bpLarge) {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.hg-cart__panel--mobile-footer {
+  @include breakpoint($bpLarge) {
+    display: none;
+  }
+}
+
+.hg-cart__content--monthly-total {
+  display: none;
+
+  @include breakpoint($bpLarge) {
+    display: flex;
+  }
+}
+
+.hg-cart__content--monthly-total-small {
+  @include breakpoint($bpLarge) {
+    display: none;
+  }
+}
+
+.hg-cart__items {
+  @include media-breakpoint-up('md') {
+    max-height: 156px;
+    overflow: auto;
+  }
+}
+
+.hg-cart__footer {
+}
+
+.hg-cart__footer--center {
+  justify-content: center;
+  min-height:20px;
+}

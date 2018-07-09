@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Price component handles normal price 1`] = `
+<span
+  className="hg-price"
+>
+  <span
+    className="hg-price__icon"
+  >
+    $
+  </span>
+  <span
+    className="hg-price__dollars"
+  >
+    9
+  </span>
+  <span
+    className="hg-price__cents"
+  >
+    .45
+  </span>
+  <span>
+    /mo
+  </span>
+</span>
+`;

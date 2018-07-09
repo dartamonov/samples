@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion component handles active accordion  1`] = `
+<div
+  aria-expanded={true}
+  className="accordion is-active"
+>
+  <div>
+    Content
+  </div>
+</div>
+`;
+
+exports[`Accordion component handles inactive accordion  1`] = `
+<div
+  aria-expanded={false}
+  className="accordion"
+>
+  <div>
+    Content
+  </div>
+</div>
+`;

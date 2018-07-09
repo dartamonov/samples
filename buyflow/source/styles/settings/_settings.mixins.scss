@@ -1,0 +1,133 @@
+// FONT MIXINS
+
+// Font size
+@mixin font-size($size) {
+	font-size: 0px + strip-unit($size);
+	font-size: strip-unit($size) / strip-unit($baseFontSize) + rem;
+}
+
+// Font Weight
+@mixin font-weight($weight:'normal') {
+  @if $weight == 'thin' or $weight == 100 {
+    font-weight:100;
+  }
+  @if $weight == 'extra light' or $weight == 200 {
+    font-weight:200;
+  }
+  @if $weight == 'light' or $weight == 300 {
+    font-weight:300;
+  }
+  @if $weight == 'normal' or $weight == 'regular' or $weight == 400 {
+    font-weight:400;
+  }
+  @if $weight == 'medium' or $weight == 500 {
+    font-weight:500;
+  }
+  @if $weight == 'bold' or $weight == 700 {
+    font-weight: 700;
+  }
+}
+
+
+//Font Size REM and PX fallback, accepts PT and converst to PX and REM
+@mixin font-size($size, $lh:1.2) {
+
+  @if(unit($size) == 'pt') {
+	   $size: strip-unit($size) - 6;
+  }
+
+  @if (unitless($size)) {
+	font-size: $size+px;
+   } @else {
+	 font-size: $size;
+   }
+  font-size: unit-calc($size);
+  @if ($lh > 0) {
+    line-height: $lh;
+  }
+
+}
+
+// Media Queries
+@mixin breakpoint($width-breakpoint, $height-breakpoint: false) {
+	$query: 'all and (min-width: $width-breakpoint)';
+
+	@if ($height-breakpoint) {
+		$query: $query + ' and (min-height: $height-breakpoint)'
+	}
+
+	@media #{$query} { @content; }
+}
+
+@mixin gutter($gutter) {
+	.gutter-#{$gutter}.row {
+		margin-right: #{$gutter / -2}px;
+		margin-left: #{$gutter / -2}px;
+	}
+	.gutter-#{$gutter} > [class^="col-"], .gutter-#{$gutter} > [class^=" col-"] {
+	  padding-right: #{$gutter / 2}px;
+	  padding-left: #{$gutter / 2}px;
+	}
+}
+
+// Button Mixin
+@mixin link(
+$font-color,
+$display:inline-block,
+$border:none,
+$background:none,
+$padding: 13px 17px,
+$margin:0 auto,
+$min-width:125px,
+//$max-width:inherit,
+$ta:center,
+$font-size:$globalBaseSize,
+$font-weight:"normal",
+$round:true)
+{
+	color: $font-color;
+	padding: unit-calc($padding);
+	margin: unit-calc($margin);
+	-webkit-appearance: none;
+	border: $border;
+	background: $background;
+	display:$display;
+	//max-width:$max-width;
+	text-align:$ta;
+	@if $min-width == "inherit" {
+		min-width: inherit;
+	}
+	@else {
+		min-width:unit-calc($min-width);
+	}
+	@include font-size($font-size);
+	@if $font-weight {
+		@include font-weight($font-weight);
+}
+	@if $round {
+		@include border-radius($rounded);
+	}
+
+}
+
+@mixin vertical-align() {
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+}
+
+@mixin gradient-horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Opera 12
+  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
+}
+
+@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Opera 12
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+}

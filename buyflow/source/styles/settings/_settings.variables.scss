@@ -1,0 +1,183 @@
+// Sitewide variables and conditionals
+
+// Paths
+$globalBaseSize: 16px !default;
+
+// Breakpoints - TBD
+$bpXsmall: "24em"; // 384px
+$bpSmall:  "32em"; // 512px
+$bpMedium: "48em"; // 768px
+$bpLarge:  "62em"; // 980px
+$bpXlarge: "75em"; // 1200px
+
+// Brand Colors
+$brandBlue:       #2ea0dd;
+$brandRed:        #c8001d;
+$brandYellow:     #fec800;
+$brandGreen:      #a2c513;
+$brandGreenLight: #dbe8a2;
+$brandTeal:       #5cb5a1;
+$brandMagenta:    #ad4383;
+
+// Grayscale colors
+
+// BOOTSTRAP COLORS
+$gray-dark:     #373a3c !default; //sass-lint:disable-line variable-name-format
+$gray:          #55595c !default;
+$gray-light:    #818a91 !default; //sass-lint:disable-line variable-name-format
+$gray-lighter:  #eceeef !default; //sass-lint:disable-line variable-name-format
+$gray-lightest: #f7f7f9 !default; //sass-lint:disable-line variable-name-format
+
+// MARS COLORS
+// $gray:          #ccc;
+$grayDarkest:      #2e2e2e;
+// $gray-dark:     #8c8c8c;
+// $gray-medium:   #aaa;
+// $gray-light:    #e5e5e5;
+// $gray-lightest: #f7f7f7;
+
+// MERCURY COLORS
+$blueSky:       #0272b6;
+$redWatermelon: #fb543f;
+$yellowBanana:  #fece00;
+$greenLime:     #5bc942;
+$blueOcean:     #015383;
+$blueMoon:      #014269;
+$redCherry:     #c90318;
+$yellowPumpkin: #ffa700;
+$greenGrass:    #19a926;
+$blueBerry:     #1f6f9a;
+$blueGenie:     #2b9cd8;
+
+// EXTENDED MERCURY COLORS
+$minty:      #65d0a7;
+$turq:       #50c3d5;
+$coral:      #ff5a5a;
+$deepPurple: #1f232e;
+$deepBlue:   #051219;
+$bramble:    #aa2dc1;
+
+// Accessible Speed Tile Colors
+$mintyAccessible: #298561;
+$turqAccessible:  #238190;
+
+// MERCURY GREY
+$white:      #fff;
+$coolGrey1:  #fbfcfc;
+$coolGrey2:  #f2f4f5;
+$coolGrey3:  #eef1f3;
+$coolGrey4:  #ebeef0;
+$coolGrey5:  #e6eaed;
+$coolGrey6:  #dde2e6;
+$coolGrey7:  #b1b9bf;
+$coolGrey8:  #868f96;
+$coolGrey9:  #44484c;
+$coolGrey10: #191919;
+$black:      #000;
+
+// EXTENDED GREYS
+$grey5:  #f2f2f4;
+$grey9:  #e8e8e8;
+$grey18: #d1d1d1;
+$grey27: #bababa;
+$grey36: #a3a3a3;
+$grey45: #8c8c8c;
+$grey54: #757575;
+$grey63: #5e5e5e;
+$grey72: #474747;
+$grey81: #303030;
+$grey90: #191919;
+
+// Fonts
+$baseFontSize: 16px;
+$baseLineHeight: 20px;
+
+// Spacing
+$spacing: $baseLineHeight;
+$spacingTiny: round($spacing / 4);
+$spacingSmall: round($spacing / 2);
+$spacingMedium: round($spacing * 1.5);
+$spacingLarge: round($spacing * 2);
+$spacingXlarge: round($spacing * 4);
+
+// z-index values
+$zOverlay: 500;
+$zDefault: 1;
+
+//Default Opacity
+$opacity: 0.9;
+$overlayOpacity: 0.3;
+
+// Animation
+$easeOut:        cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeIn:         cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$easeInOut:      cubic-bezier(0.645, 0.045, 0.355, 1);
+$easeOutBack:    cubic-bezier(0.12, 0.4, 0.29, 1.46);
+$easeInBack:     cubic-bezier(0.71, -0.46, 0.88, 0.6);
+$easeInOutBack:  cubic-bezier(0.71, -0.46, 0.29, 1.46);
+$easeOutCirc:    cubic-bezier(0.08, 0.82, 0.17, 1);
+$easeInCirc:     cubic-bezier(0.6, 0.04, 0.98, 0.34);
+$easeInOutCirc:  cubic-bezier(0.78, 0.14, 0.15, 0.86);
+$easeOutQuint:   cubic-bezier(0.23, 1, 0.32, 1);
+$easeInQuint:    cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+
+//padding
+$overlayPadding: unit-calc(54px);
+$overlayPaddingMobile: unit-calc(25px);
+
+//shop vars
+$rounded: unit-calc(25px);
+
+$shapeCheck: "M18.6 7c-0.6-0.6-1.5-0.6-2.1 0l-5.6 7.3L8.5 12c-0.6-0.6-1.5-0.6-2.1 0c-0.6 0.6-0.6 1.5 0 2.1l3.5 3.5 c0.6 0.6 1.5 0.6 2.1 0l6.5-8.5C19.2 8.6 19.2 7.6 18.6 7z";
+
+$display1Color:  $coolGrey10 !default;
+$display2Color:  $coolGrey10 !default;
+$display3Color:  $coolGrey10 !default;
+$heading1Color:  $coolGrey10 !default;
+$heading2Color:  $coolGrey10 !default;
+$heading3Color:  $coolGrey10 !default;
+$body1Color:     $coolGrey10 !default;
+$body2Color:     $coolGrey10 !default;
+$body3Color:     $coolGrey10 !default;
+$body4Color:     $coolGrey10 !default;
+$heading4Color:  $coolGrey10 !default;
+$heading5Color:  $coolGrey10 !default;
+
+$display1Size:   50;
+$display2Size:   40;
+$display3Size:   30;
+$heading1Size:   24;
+$heading2Size:   24;
+$heading3Size:   20;
+$body1Size:      16;
+$body2Size:      16;
+$body3Size:      14;
+$body4Size:      12;
+$heading4Size:   15;
+$heading5Size:   12;
+
+$display1Height:   75;
+$display2Height:   60;
+$display3Height:   45;
+$heading1Height:   36;
+$heading2Height:   36;
+$heading3Height:   30;
+$body1Height:      27;
+$body2Height:      24;
+$body3Height:      21;
+$body4Height:      18;
+$heading4Height:   22;
+$heading5Height:   18;
+
+$display1SizeLarge:   70;
+$display2SizeLarge:   50;
+$display3SizeLarge:   40;
+$heading1SizeLarge:   30;
+$body1SizeLarge:      18;
+
+$display1HeightLarge:   105;
+$display2HeightLarge:   75;
+$display3HeightLarge:   60;
+$heading1HeightLarge:   45;
+$body1HeightLarge:      28;

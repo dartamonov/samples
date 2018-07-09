@@ -1,0 +1,74 @@
+//================== Buttons ============================/
+input[type=button]:focus,
+button:focus,
+a:focus {
+  outline: 2px dotted $blueSky;
+}
+
+.x-button {
+
+  /* Solid Button */
+  &--solid{
+    @include link($white,$border:1px solid $blueSky, $font-size:16px, $background:$blueSky, $margin: 0 auto);
+    transition: background-color 0.5s, color 0.5s, opacity 0.5s;
+
+    &:hover,
+    &:focus {
+      background:$blueOcean;
+      color: $white;
+      border-color:$blueOcean;
+      text-decoration:none;
+    }
+
+    &:visited {
+      @extend .x-button--solid;
+    }
+  }
+
+  &--outline {
+    @include link($blueSky, $border:1px solid $blueSky, $font-size:16px, $background:none);
+
+    &:hover,
+    &:focus {
+      background-color: $blueSky;
+      color: $white;
+      border-color: $blueSky;
+      text-decoration: none;
+    }
+  }
+
+  &--disabled {
+    @include link($white, $border: 1px solid $blueSky, $font-size: 16px, $background: $blueSky, $margin: 0 auto);
+    opacity: 0.3;
+    transition: background-color 0.5s, color 0.5s, opacity 0.5s;
+    outline: none;
+    cursor: default;
+  }
+
+  &--squared {
+    border-radius: 3px;
+  }
+}
+
+@mixin x-button--text {
+  @include font-weight("medium");
+  display: inline;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  color: $blueSky;
+  text-decoration: none;
+}
+
+.x-button--text {
+  @include x-button--text;
+
+  &:hover,
+  &:focus {
+    @include x-button--text;
+  }
+
+  &.accessible-on-dark {
+    color: $blueGenie;
+  }
+}

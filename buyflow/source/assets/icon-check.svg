@@ -1,0 +1,7 @@
+<svg width="29" height="24" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
+  <title>Check</title>
+  <g transform="translate(-3 -6)" fill="none" fillRule="evenodd">
+    <rect width="22" height="22" rx="3"/>
+    <path d="M7.843 17.72L3.28 13.136c-.373-.374-.373-.98 0-1.355.37-.373.977-.373 1.35 0l3.885 3.906L17.87 6.28c.373-.373.977-.373 1.35 0 .373.374.373.982 0 1.356L9.19 17.72c-.174.178-.417.28-.67.28-.253 0-.495-.102-.677-.28z" fill="#65D0A7"/>
+  </g>
+</svg>

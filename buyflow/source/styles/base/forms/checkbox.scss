@@ -1,0 +1,81 @@
+.is-ac-hidden, .vh {
+    position: absolute !important;
+    display: block;
+    visibility: visible;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+}
+
+.x-checkbox {
+  & ~ .x-checkbox-label:before {
+    @include border-radius(2px);
+    content: '';
+    position: absolute;
+    display: inline-block;
+    top: 3px;
+    left: 0;
+    width: unit-calc(24px);
+    height: unit-calc(24px);
+    border: 1px solid $coolGrey8;
+    background-color: $coolGrey2;
+  }
+
+  &:checked ~ .x-checkbox-label:before {
+    background: $blueSky svgShape($white, "0 0 24 24", $shapeCheck) no-repeat center center;
+    border-color: $blueSky;
+    transition: all cubic-bezier(0.18,0.89,0.32,1.28) 1s;
+  }
+
+  &:focus ~ .x-checkbox-label:before {
+    outline: 1px dotted $blueSky;
+    outline-offset: 2px;
+  }
+
+  &-label {
+    margin-bottom: 24px;
+    position: relative;
+    padding-left: 36px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &.x-invalid ~ .x-checkbox-label:before {
+    border-color: lighten($redCherry, 40%);
+    background-color: lighten($redCherry, 50%);
+  }
+
+  &.x-invalid:checked ~ .x-checkbox-label:before {
+    background: lighten($redCherry, 50%) svgShape($redCherry, "0 0 24 24", $shapeCheck) no-repeat center center;
+  }
+
+  &.x-invalid ~ .x-checkbox-label {
+    color: $redCherry;
+  }
+
+  & + label.x-checkbox-label__default-selected:before {
+    border: 0;
+    background: url('#{$assets-path}icon-check.svg');
+    flex: 0 0 unit-calc(16.5px);
+    max-width: unit-calc(16.5px);
+    margin-right: unit-calc(17.5px);
+    background-size: unit-calc(16.5px 12px);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &:checked + label.x-checkbox-label__default-selected:before {
+    border: 0;
+    background: url('#{$assets-path}icon-check.svg');
+    flex: 0 0 unit-calc(16.5px);
+    max-width: unit-calc(16.5px);
+    margin-right: unit-calc(17.5px);
+    background-size: unit-calc(16.5px 12px);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

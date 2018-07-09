@@ -1,0 +1,56 @@
+/**
+ * Page-level styling, common to all pages
+ */
+body {
+  background-color: #F2F4F4 !important;
+  word-break: break-word;
+}
+
+.hg-page-container {
+  padding: unit-calc(28px 0 112px); // adds padding bottom to account for fixed cart on mobile
+  // don't add top padding if error box is shown
+  &:nth-child(2) {
+    @include media-breakpoint-up('md') {
+      padding: unit-calc(20px 0 78px);
+    }
+  }
+  @include media-breakpoint-up('md') {
+    padding: unit-calc(28px 0 78px);
+  }
+}
+
+.hg-review-page-container {
+  padding: unit-calc(24px 0 24px);
+
+  @include media-breakpoint-up('md') {
+    padding: unit-calc(78px 0 78px);
+  }
+}
+
+.hg-main {
+  // Flexbox issues in IE 10-11 requires flex: 1 0 auto instead of flex: 1
+  flex: 1 0 auto;
+}
+
+/**
+ * Expanding the height of the base containers for the loader
+ */
+
+html,
+body,
+#app,
+div[data-reactroot],
+div[data-reactroot] > .Loader {
+  height: 100%;
+}
+
+.Loader__content {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  //target ie 10+ only flexbox height fix
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    height: 100%
+  }
+}

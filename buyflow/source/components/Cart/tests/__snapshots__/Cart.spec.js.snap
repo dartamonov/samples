@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart component handles normal price 1`] = `
+<div
+  className="hg-cart"
+>
+  <div
+    className="hg-cart__panel"
+  >
+    <div
+      className="hg-cart__panel-content"
+    >
+      <h2
+        className="hg-cart__panel-title x-heading3"
+      >
+        Monthly Total
+      </h2>
+    </div>
+    <div
+      className="hg-cart__panel-content"
+    >
+      <span
+        className="hg-price"
+      >
+        <span
+          className="hg-price__icon"
+        >
+          $
+        </span>
+        <span
+          className="hg-price__dollars"
+        >
+          10
+        </span>
+        <span
+          className="hg-price__cents"
+        >
+          .95
+        </span>
+        <span>
+          /mo
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    className="hg-cart__panel"
+  >
+    <button
+      className="x-button--solid"
+      type="button"
+    >
+      Review
+    </button>
+  </div>
+</div>
+`;

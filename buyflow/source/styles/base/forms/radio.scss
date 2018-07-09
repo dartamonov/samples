@@ -1,0 +1,96 @@
+.x-input--radio {
+	display: flex;
+	align-items: center;
+	&:before {
+		//margin-top: 5px;
+		flex: 0 0 unit-calc(24px);
+		max-width: unit-calc(24px);
+	}
+}
+
+.x-field--radio label {
+	margin: unit-calc(0 0 8px 0);
+
+	&:hover {
+		cursor:pointer;
+	}
+}
+
+[class^='x-field--'] {
+    position: relative;
+}
+
+input[type=radio] {
+	position: absolute;
+	width: unit-calc(24px);
+	height: unit-calc(24px);
+	margin: 0;
+	padding: 1px;
+	display: inline-block;
+	top: 1px;
+	left: 1px;
+	z-index: 5;
+	opacity: 0;
+
+	&:hover {
+		cursor: pointer;
+	}
+	&.x-invalid {
+    + label:after {
+			border-color: lighten($redCherry, 40%);
+			background-color: lighten($redCherry, 50%);
+		}
+
+		+ .x-custom--radio {
+			border-color: lighten($redCherry, 40%);
+			background-color: lighten($redCherry, 50%);
+		}
+	}
+	&:focus {
+		+ label:before {
+			outline: 1px dotted $blueSky;
+		}
+		+ .x-custom--radio {
+			outline: 1px dotted $blueSky;
+		}
+	}
+
+	&:checked {
+		+ label:before {
+			border-color: $blueSky;
+			border-width:unit-calc(6px);
+			background-color:$white;
+		}
+
+		+ .x-custom--radio {
+			border-color: $blueSky;
+			border-width:unit-calc(6px);
+			background-color:$white;
+		}
+	}
+
+	& + label:before {
+		content: "";
+		box-sizing: border-box;
+		position: relative;
+		display: inline-block;
+		border-radius: 50%;
+		border: 1px solid $coolGrey8;
+		width: unit-calc(24px);
+		height: unit-calc(24px);
+		margin-right:unit-calc(12px);
+		background: $coolGrey2;
+		vertical-align: middle;
+		transition: all $easeInOut .3s;
+	}
+
+	& + label.x-input--radio__default-selected:before {
+		border: 0;
+		background: url('#{$assets-path}icon-check.svg');
+		flex: 0 0 unit-calc(29px);
+		max-width: unit-calc(29px);
+		width: unit-calc(29px);
+		height: unit-calc(24px);
+		margin-right:unit-calc(7px);
+	}
+}

@@ -1,0 +1,98 @@
+/**
+ * Util classes
+ */
+.pointer {
+  cursor: pointer;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-align-center {
+  align-items: center;
+}
+
+.no-margin {
+  margin-left: 0;
+  margin-right: 0;
+  & > [class*='col-'] {
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.no-margin-bottom {
+  margin-bottom:0;
+}
+
+.no-any-margin {
+  margin:0;
+}
+
+.x-display--ib {
+  display: inline-block;
+}
+
+.x-display--b {
+  display: block;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-strikethrough {
+  text-decoration: line-through;
+}
+
+.inline-list {
+  padding-left: 1em;
+  margin-left: 0;
+  //list-style-position: inside;
+}
+
+.plain-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.padding-bottom--heading {
+  padding-bottom: 30px;
+}
+
+.vh-small {
+  display: none;
+
+  @include breakpoint($bpMedium) {
+  display: inline-block;
+  }
+}
+
+// Needed for overlay
+// TODO: Remove the need for this class or anything outside of the
+// Overlay stylsheet including variables in settings
+.x-ui-theme--light {
+  color: $coolGrey10;
+  background: $white;
+}
+
+.thin-top-border {
+  border-top: 1px solid $coolGrey6;
+}

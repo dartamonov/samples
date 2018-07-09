@@ -1,0 +1,7 @@
+/**
+* Generate gutter overrides
+* default for bootstrap is 30px
+* all values passed are in px
+*/
+@include gutter(20);
+@include gutter(10);

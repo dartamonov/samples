@@ -1,0 +1,96 @@
+.customize-channel-panel {
+  padding: unit-calc(0 24);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+  background-size: cover;
+
+  .x-body3 {
+    color: $white;
+  }
+
+  label {
+    cursor: pointer;
+    margin-bottom: 0;
+    align-items: initial;
+  }
+  background-color: $black;
+  color: $white;
+}
+
+.customize-channel-panel__content {
+  @include media-breakpoint-up("md") {
+    min-height: unit-calc(200);
+  }
+
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+  min-height: unit-calc(180);
+  padding: unit-calc(48 24 24);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.customize-channel-panel__input {
+  border-top: unit-calc(1) solid $coolGrey8;
+  position: relative;
+  padding: unit-calc(24 0);
+
+  label,
+  .hg-price__item--monthly {
+    color: $white;
+  }
+
+  .disabled {
+    display: none;
+  }
+}
+
+.customize-channel-panel__input--non-removable {
+  padding: unit-calc(16 0);
+}
+
+.customize-channel-panel__content--top {
+  display: flex;
+  height:100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.customize-channel-panel__content--bottom {
+  margin-top: unit-calc(12);
+}
+
+.margin-top12 {
+  margin-top: unit-calc(12px);
+}
+
+.grandfathered-channels {
+  @include media-breakpoint-up("sm") {
+    display: flex;
+  }
+
+  margin-bottom: unit-calc(10);
+}
+
+.grandfathered-channels__icon {
+  @include media-breakpoint-up("sm") {
+    flex: 0 0 unit-calc(80);
+    margin-bottom: 0;
+    float: none;
+  }
+
+  width: unit-calc(80);
+  float: left;
+  margin-bottom: unit-calc(5);
+  padding-right: unit-calc(20);
+
+  .icon-tv-list {
+    padding: unit-calc(10);
+    background-color: $yellowPumpkin;
+    border-radius: unit-calc(80);
+  }
+}

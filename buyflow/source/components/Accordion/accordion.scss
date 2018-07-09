@@ -1,0 +1,22 @@
+.accordion {
+  margin-bottom: 20px;
+
+  &.is-active {
+    .accordion__body {
+      display: block;
+    }
+  }
+}
+
+.accordion__title {
+  margin-bottom: 2px;
+}
+
+.accordion__body {
+  display: none;
+  .hg-panel{
+    background-color: $coolGrey1;
+  }
+}
+
+.accordion__trigger {}

@@ -1,0 +1,89 @@
+.hg-panel {
+  background: #FFF;
+  padding: unit-calc(20);
+  position: relative;
+
+  &--secondary {
+    background: $coolGrey1;
+  }
+
+  hr {
+    margin-top: 0;
+    background: $coolGrey5;
+  }
+}
+
+.hg-panel__content {
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.hg-panel--action-right-at-768 {
+  .hg-panel__action {
+    @include media-breakpoint-up('lg') {
+      @include vertical-align;
+      right: 12px;
+    }
+  }
+}
+
+.hg-panel--transparent {
+  background: transparent;
+  padding: 0 0 20px;
+
+  @include media-breakpoint-up('lg') {
+    padding: 20px;
+  }
+}
+
+.hg-panel--bordered {
+  border: 1px solid $grey9;
+}
+
+.hg-panel--bordered-no-top {
+  border-top: 0;
+}
+
+.hg-panel--border-top {
+  border-top: 1px solid $grey9;
+}
+
+.hg-panel--cool-grey1 {
+  background: $coolGrey1;
+}
+
+.hg-panel-pipe-container {
+  border-bottom: 1px solid $grey9;
+  @include media-breakpoint-up('lg') {
+    border-bottom: 0;
+    border-right: 1px solid $grey9;
+    margin-right: unit-calc(-20px);
+    padding-right: unit-calc(20px);
+  }
+
+  .x-input--radio {
+    align-items: flex-start;
+    &:before {
+      margin-top: unit-calc(3px);
+    }
+  }
+}
+
+.hg-panel--block {
+  display: block;
+  flex: 1;
+}
+
+.hg-panel--collapse-top {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.hg-panel--slim {
+  padding: unit-calc(12 20);
+}
+
+.hg-panel--cool-greyN {
+  background-color: #F9FAFA;
+}

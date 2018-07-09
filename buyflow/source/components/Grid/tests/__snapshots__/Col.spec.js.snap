@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Col component accepts a pull prop 1`] = `
+<div
+  className="col-xs-pull-1"
+>
+  <span>
+    Test
+  </span>
+</div>
+`;
+
+exports[`Col component accepts a push prop 1`] = `
+<div
+  className="col-xs-push-1"
+>
+  <span>
+    Test
+  </span>
+</div>
+`;
+
+exports[`Col component accepts an offset prop 1`] = `
+<div
+  className="col-xs-offset-1"
+>
+  <span>
+    Test
+  </span>
+</div>
+`;
+
+exports[`Col component accepts an xs, sm, md, and lg props to define grid size 1`] = `
+<div
+  className="col-lg-4 col-md-6 col-xs-12"
+>
+  <span>
+    Test
+  </span>
+</div>
+`;
+
+exports[`Col component requires a child component 1`] = `
+<div
+  className=""
+>
+  <span>
+    Test
+  </span>
+</div>
+`;

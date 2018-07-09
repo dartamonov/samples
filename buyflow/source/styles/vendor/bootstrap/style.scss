@@ -1,0 +1,107 @@
+$enable-flex:               true;
+$enable-grid-classes:       true;
+
+$border-radius:          0.1rem !default;
+$border-radius-lg:       0.1rem !default;
+$border-radius-sm:       0.1rem !default;
+
+$input-padding-x:        .95rem !default;
+$input-padding-y:        .775rem !default;
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 544px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+) !default;
+
+$container-max-widths: (
+  xs: 375px,
+  sm: 768px,
+  md: 1024px,
+  lg: 1340px,
+  xl: 1340px
+) !default;
+
+$gutter-sizes: (
+  // Extra small screen / phone
+  xs: 0.375rem,
+  // Small screen / phone
+  sm: 0.375rem,
+  // Medium screen / tablet
+  md: 0.75rem,
+  // Large screen / desktop
+  lg: 0.75rem,
+  // Extra large screen / wide desktop
+  xl: 0.75rem
+) !default;
+
+$margin-sizes: (
+  // Extra small screen / phone
+  xs: 12px, // 0.75rem
+  // Small screen / phone
+  sm: 20px, // 1.25rem
+  // Medium screen / tablet
+  md: 30px, // 1.875rem
+  // Large screen / desktop
+  lg: 30px, // 1.875rem
+  // Extra large screen / wide desktop
+  xl: 30px // 1.875rem
+) !default;
+
+@import 'bootstrap/scss/_variables.scss';
+
+@import 'bootstrap/scss/_mixins.scss';
+
+//ie10+ flex grid bug fix TODO: remove on bootstrap upgrade
+@mixin make-col-span($size, $columns: $grid-columns) {
+  @if $enable-flex {
+    flex: 0 0 percentage($size / $columns);
+    // Add a `max-width` to ensure content within each column does not blow out
+    // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+    // do not appear to require this.
+    max-width: percentage($size / $columns);
+  } @else {
+    width: percentage($size / $columns);
+  }
+}
+
+@import 'bootstrap/scss/_normalize.scss';
+@import 'bootstrap/scss/_reboot.scss';
+@import 'bootstrap/scss/_grid.scss';
+@import 'bootstrap/scss/_forms.scss';
+@import 'bootstrap/scss/_utilities-responsive.scss';
+
+// Gutters
+@each $breakpoint, $gbp in $grid-breakpoints {
+  @include media-breakpoint-up($breakpoint) {
+    @each $gb in map-keys($grid-breakpoints) {
+      @for $i from 1 through $grid-columns {
+        .col-#{$gb}-#{$i} {
+          padding-left: (map-get($gutter-sizes, $breakpoint) / 2);
+          padding-right: (map-get($gutter-sizes, $breakpoint) / 2);
+        }
+      }
+      .row {
+        margin-left: -(map-get($gutter-sizes, $breakpoint) / 2);
+        margin-right: -(map-get($gutter-sizes, $breakpoint) / 2);
+      }
+    }
+  }
+}
+
+// "Margin" - spoiler - its really padding
+@each $breakpoint, $container-max-width in $container-max-widths {
+  @include media-breakpoint-up($breakpoint) {
+    .container {
+      padding-left: (map-get($margin-sizes, $breakpoint));
+      padding-right: (map-get($margin-sizes, $breakpoint));
+    }
+  }
+}

@@ -1,0 +1,58 @@
+label,
+.control-label {
+  @include font-weight("light");
+  font-size:18px;
+}
+
+// REMOVE CHROME BORDER RADIUS AROUND SELETS
+// need a way to add arrow back
+select {
+  appearance: none;
+  border-radius: 0;
+}
+
+.radio label input:only-child,
+.checkbox label input:only-child {
+    position: absolute;
+}
+
+.custom-select-container {
+  background:white;
+}
+
+.custom-select {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    border-radius: 0;
+}
+
+.x-error-message {
+  color: $redCherry;
+  display: flex;
+}
+
+.x-error-message.x-body2 {
+  .x-error-text {
+    padding-top: 3px;
+  }
+}
+
+.x-error-icon {
+  margin-right: unit-calc(18px);
+}
+
+.x-error-panel {
+  //background: $white;
+  //border-left: 5px solid $redCherry;
+  padding: 12px 0;
+  margin-bottom: 10px;
+
+  .x-error-message:last-child {
+      margin-bottom: 0;
+  }
+}
+
+//@import "forms/checkbox.scss";
+@import "forms/radio.scss";
+@import "forms/checkbox.scss";
