@@ -1,4 +1,4 @@
-# Accessible HTML5 video player
+# Accessible HTML5 video player as JS component
 Demo - [https://accessible-html5-player.herokuapp.com/](https://accessible-html5-player.herokuapp.com/)
 
 ### Setup
