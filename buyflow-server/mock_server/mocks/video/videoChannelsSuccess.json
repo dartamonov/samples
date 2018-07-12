@@ -1,0 +1,118 @@
+{
+  "customization": {
+    "channelGroups": {
+      "videoPremiumChannel": {
+        "channels": [
+          {
+            "logoUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/assets/Starz_logo.png",
+            "backgroundImageUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Starz_tile_bg.png",
+            "id": "610379779",
+            "name": "Starz",
+            "description": "Starz®, Starz Edge™, Starz Cinema®, Starz Kids & Family® & more",
+            "price": 10.99,
+            "isSelected": false
+          },
+          {
+            "logoUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/HBO_logo.png",
+            "backgroundImageUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/HBO_tile_bg.png",
+            "id": "610371595",
+            "name": "HBO",
+            "description": "HBO®, HBO 2®, HBO Comedy®, HBO Latino®, HBO Family & more",
+            "price": 10.99,
+            "isSelected": false
+          },
+          {
+            "logoUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Showtime_logo.png",
+            "backgroundImageUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Showtime_tile_bg.png",
+            "id": "610375654",
+            "name": "Showtime",
+            "description": "Showtime®, Showtime 2®, Showcase®, Showtime Extreme® & more",
+            "price": 10.99,
+            "isSelected": false
+          },
+          {
+            "logoUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Cinemax_logo.png",
+            "backgroundImageUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Cinemax_tile_bg.png",
+            "id": "610383367",
+            "name": "Cinemax",
+            "description": "Cinemax®, MoreMax®, ActionMax®, MovieMax® & more",
+            "price": 10.99,
+            "isSelected": false
+          }
+        ],
+        "channelType": "VideoPremiumChannel",
+        "weight": 0,
+        "isModuleExpanded": true,
+        "title": "Pick channels to order"
+      },
+      "videoOnDemand": {
+        "channels": [
+          {
+            "logoUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Latino_logo.png",
+            "backgroundImageUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Latino_tile_bg.png",
+            "id": "610563245",
+            "name": "MultiLatino",
+            "description": "Enjoy Cinelatino and ViendoMovies along with MTV3, mun2 beIN SPORT en Español, Vme Kids & more!",
+            "price": 10.99,
+            "isSelected": false
+          },
+          {
+            "logoUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Disneyfm_logo.png",
+            "backgroundImageUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Disneyfm_tile_bg.png",
+            "id": "610370532",
+            "name": "Disney Family Movies On Demand",
+            "description": "A month full of disney whenever you want, from beloved classics to new popular favorites.",
+            "price": 10.99,
+            "isSelected": false
+          },
+          {
+            "logoUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Filipino_logo.png",
+            "backgroundImageUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Filipino_tile_bg.png",
+            "id": "610370966",
+            "name": "Filipino On Demand",
+            "description": "24/7 access to Pinoy movies, drama series and live concerts.",
+            "price": 10.99,
+            "isSelected": false
+          },
+          {
+            "logoUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Heretv_logo.png",
+            "backgroundImageUrl": "//cdn.wcdc.int.comcast.com/learn/-/media/Images/www_xfinity_com/buy/video/Heretv_tile_bg.png",
+            "id": "610370653",
+            "name": "here! On Demand",
+            "description": "Gay Television, On Demand. No apologies. Ground breaking series, original films & more.",
+            "price": 10.99,
+            "isSelected": false
+          }
+        ],
+        "channelType": "VideoOnDemand",
+        "weight": 1,
+        "isModuleExpanded": false,
+        "title": "On Demand Packages",
+        "description": "Your favorite Disney movies On Demand whenever you want, including a new selection of 10-12 movies per month, as well as other fun Disney features."
+      },
+      "videoSportsChannel": {
+        "channels": [
+          {
+            "logoUrl": "https://cdn.comcast.com/learn/-/media/Images/www_xfinity_com/Buy/Video/MLB_logo",
+            "backgroundImageUrl": "https://cdn.comcast.com/learn/-/media/Images/www_xfinity_com/Buy/Video/MLB_tile_bg",
+            "id": "1457563675",
+            "name": "MLB Extra Innings - 1 Payment",
+            "description": "Follow your favorite team no matter where you live with over 80 out-of-market games per week.",
+            "price": 19.50,
+            "isSelected": false
+          }
+        ],
+        "channelType": "VideoSportsChannel",
+        "weight": 2,
+        "isModuleExpanded": false,
+        "title": "Sports Channel Packs",
+        "description": "Now with NFL RedZone, catch every touchdown from every game, every Sunday afternoon. Also get access to hundreds of live games, from college basketball, football, soccer, tennis and more."
+      }
+    }
+  },
+  "cart": {
+    "monthlyTotal": 0
+  },
+  "responseStatus": "Success",
+  "errors": []
+}

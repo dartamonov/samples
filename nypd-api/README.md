@@ -1,2 +1,3 @@
-<h3>NYPD open data test with Node.js and AngularJS</h3>
-<p>View on <a href="http://nypd1.herokuapp.com/" target="blank">Heroku</a></p> 
+# NYPD open data test with Node.js/Express and AngularJS
+
+Demo - [http://nypd1.herokuapp.com](http://nypd1.herokuapp.com) 
