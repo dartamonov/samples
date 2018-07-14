@@ -1,0 +1,15 @@
+{
+  "name": "clockTowerBellCounter ",
+  "version": "1.0.0",
+  "description": "Clock Tower Bell Counter",
+  "main": "clockTower.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Dmitry Artamonov",
+  "devDependencies": {
+    "babel-preset-env": "*",
+    "jest": "*"
+  }
+}
