@@ -1,0 +1,10 @@
+@mixin gutter($gutter) {
+	.gutter-#{$gutter}.row {
+		margin-right: #{$gutter / -2}px;
+		margin-left: #{$gutter / -2}px;
+	}
+	.gutter-#{$gutter} > [class^="col-"], .gutter-#{$gutter} > [class^=" col-"] {
+	  padding-right: #{$gutter / 2}px;
+	  padding-left: #{$gutter / 2}px;
+	}
+}

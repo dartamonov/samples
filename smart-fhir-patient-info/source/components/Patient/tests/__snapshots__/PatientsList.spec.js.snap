@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PatientsList component handles patients list 1`] = `
+<div>
+  <h1
+    className="x-heading1"
+    tabIndex="-1"
+  >
+    Patients
+  </h1>
+  <p>
+    View patients by ID:
+  </p>
+  <ul>
+    <li>
+      <a
+        href="/patient/2744010"
+      >
+        2744010
+      </a>
+    </li>
+    <li>
+      <a
+        href="/patient/1316024"
+      >
+        1316024
+      </a>
+    </li>
+  </ul>
+</div>
+`;
